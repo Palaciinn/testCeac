@@ -1,22 +1,232 @@
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
-    padding: 20px;
+/* Reset de estilos predeterminados del navegador */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-h1 {
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    background-color: #f4f4f9;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Asegura que el body ocupe todo el alto de la ventana */
+    padding: 0; /* Elimina cualquier padding extra */
+}
+
+/* Usamos Flexbox solo dentro de main */
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;  /* Centra los elementos dentro del main horizontalmente */
+    flex-grow: 1;  /* Esto hace que main ocupe el espacio disponible */
+    min-height: 70vh;  /* Establece la altura mínima del main */
+    text-align: center; /* Centra el texto dentro de main */
+    justify-content: center; /* Centra los elementos dentro del main verticalmente */
+    gap: 20px; /* Añade espacio entre los elementos dentro de main */
+}
+
+/* Header */
+header {
+    background-color: #333;
+    padding: 30px 0;
+    width: 100%; /* Asegura que el header ocupe todo el ancho de la pantalla */
     text-align: center;
 }
 
-button {
-    padding: 10px;
-    margin: 5px;
-    background-color: #4CAF50;
+header nav a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.3rem;
+}
+
+header nav a:hover {
+    text-decoration: underline;
+}
+
+/* Títulos */
+h1 {
+    font-size: 2.5rem;
+    color: #333;
+    position: relative; /* Necesario para posicionar el pseudo-elemento */
+}
+
+h1 strong {
+    position: relative; /* Asegura que el pseudo-elemento se posicione relativo a la palabra "CEAC" */
+}
+
+h1 strong::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -5px; /* Ajusta la distancia de la línea respecto al texto */
+    width: 0%; /* Comienza con un ancho de 0 para la animación */
+    height: 4px; /* Altura de la línea */
+    background: #0056b3; /* Color de la línea */
+    border-radius: 10px; /* Hace que la línea sea más natural (con bordes redondeados) */
+    animation: underlineEffect 0.6s ease-out forwards; /* Aplica la animación */
+}
+
+/* Definir la animación de subrayado de izquierda a derecha */
+@keyframes underlineEffect {
+    0% {
+        width: 0%; /* Comienza con un ancho de 0% */
+    }
+    100% {
+        width: 100%; /* Al final, la línea se extiende al 100% del ancho */
+    }
+}
+
+
+h2 {
+    font-size: 1.8rem;
+    color: #444;
+}
+
+/* Contenedor principal de los enlaces de los módulos */
+.nav-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 40px;
+}
+
+.nav-container ul {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    gap: 30px;
+}
+
+.nav-container li {
+    background-color: #004aad;
+    border-radius: 5px;
+    transition: transform 0.2s ease-in-out;
+}
+
+.nav-container li:hover {
+    transform: scale(1.1);
+}
+
+.nav-container a {
+    display: block;
+    padding: 30px 50px;
     color: white;
-    border: none;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.2rem;
+    text-align: center;
     border-radius: 5px;
 }
 
-button:hover {
-    background-color: #45a049;
+.nav-container a:hover {
+    background-color: #0056b3;
+}
+
+/* Mantén los estilos de la clase nav-container para la página de inicio */
+.nav-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 40px;
+}
+
+.nav-container ul {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    gap: 30px;
+}
+
+.nav-container li {
+    background-color: #004aad;
+    border-radius: 5px;
+    transition: transform 0.2s ease-in-out;
+}
+
+.nav-container li:hover {
+    transform: scale(1.1);
+}
+
+.nav-container a {
+    display: block;
+    padding: 30px 50px;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.2rem;
+    text-align: center;
+    border-radius: 5px;
+}
+
+.nav-container a:hover {
+    background-color: #0056b3;
+}
+
+/* Contenedor principal de los enlaces para las páginas de modulos */
+.nav-container-modulos {
+    display: flex;
+    flex-wrap: wrap; /* Permite que los elementos se ajusten en filas */
+    justify-content: space-between; /* Distribuye los elementos de manera equitativa */
+    align-items: center;
+    max-width: 75%; /* Establece un ancho máximo del 75% de la pantalla */
+    margin-top: 40px;
+    margin-left: auto; /* Centra el contenedor en la pantalla */
+    margin-right: auto; /* Centra el contenedor en la pantalla */
+}
+
+.nav-container-modulos ul {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap; /* Permite que los elementos de la lista se ajusten en varias filas */
+    gap: 30px; /* Espacio entre los elementos */
+    justify-content: space-between; /* Espacio entre las columnas */
+    width: 100%; /* Asegura que la lista ocupe todo el ancho disponible dentro de su contenedor */
+}
+
+.nav-container-modulos li {
+    background-color: #004aad;
+    border-radius: 5px;
+    transition: transform 0.2s ease-in-out;
+    flex: 1 0 30%; /* Esto asegura que los elementos se distribuyan en 3 columnas */
+    box-sizing: border-box; /* Asegura que el padding y el border no afecten al tamaño total */
+}
+
+.nav-container-modulos li:hover {
+    transform: scale(1.05);
+}
+
+.nav-container-modulos a {
+    display: block;
+    padding: 30px 50px;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.2rem;
+    text-align: center;
+    border-radius: 5px;
+}
+
+.nav-container-modulos a:hover {
+    background-color: #0056b3;
+}
+
+/* Estilo para el pie de página */
+footer {
+    font-family: 'Arial', sans-serif;
+    text-align: center;
+    padding: 20px;
+    background-color: #333;
+    color: white;
+    width: 100%; /* Asegura que el footer ocupe todo el ancho de la pantalla */
+    margin-top: 0; /* Elimina el margen superior innecesario */
+}
+
+/* Estilos para el archivo de script */
+script {
+    display: none;
 }
