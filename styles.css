@@ -169,31 +169,38 @@ h2 {
 /* Contenedor principal de los enlaces para las páginas de modulos */
 .nav-container-modulos {
     display: flex;
-    flex-wrap: wrap; /* Permite que los elementos se ajusten en filas */
-    justify-content: space-between; /* Distribuye los elementos de manera equitativa */
+    flex-wrap: wrap;
+    justify-content: space-between;
     align-items: center;
-    width: 50%; /* Establece un ancho máximo del 50% de la pantalla */
-    margin-top: 40px;
-    margin-left: auto; /* Centra el contenedor en la pantalla */
-    margin-right: auto; /* Centra el contenedor en la pantalla */
+    max-width: 900px;     /* ancho máximo en pantallas grandes */
+    width: 100%;          /* ocupa el 100% disponible en móviles */
+    padding: 0 20px;      /* algo de espacio lateral */
+    margin: 40px auto;    /* centra verticalmente y horizontalmente */
 }
 
 .nav-container-modulos ul {
     list-style-type: none;
     padding: 0;
+    margin: 0;
     display: flex;
-    flex-wrap: wrap; /* Permite que los elementos de la lista se ajusten en varias filas */
-    gap: 30px; /* Espacio entre los elementos */
-    justify-content: space-between; /* Espacio entre las columnas */
-    width: 100%; /* Asegura que la lista ocupe todo el ancho disponible dentro de su contenedor */
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center; /* centra el contenido */
+    width: 100%;
 }
 
 .nav-container-modulos li {
     background-color: #004aad;
     border-radius: 5px;
     transition: transform 0.2s ease-in-out;
-    flex: 1 0 30%; /* Esto asegura que los elementos se distribuyan en 3 columnas */
-    box-sizing: border-box; /* Asegura que el padding y el border no afecten al tamaño total */
+    flex: 1 1 calc(50% - 20px); /* dos columnas con espacio */
+    box-sizing: border-box;
+}
+
+@media (min-width: 769px) {
+    .nav-container-modulos li {
+        flex: 1 1 calc(30% - 20px); /* tres columnas desde tabletas */
+    }
 }
 
 .nav-container-modulos li:hover {
@@ -202,11 +209,11 @@ h2 {
 
 .nav-container-modulos a {
     display: flex;
-    justify-content: center;     /* Centra horizontalmente */
-    align-items: center;         /* Centra verticalmente */
+    justify-content: center;
+    align-items: center;
     text-align: center;
-    padding: 40px 20px;          /* Puedes ajustar la altura visual aquí */
-    min-height: 145px;           /* Asegura que tenga espacio vertical */
+    padding: 40px 20px;
+    min-height: 145px;
     color: white;
     text-decoration: none;
     font-weight: bold;
@@ -214,10 +221,11 @@ h2 {
     border-radius: 5px;
 }
 
-
 .nav-container-modulos a:hover {
     background-color: #0056b3;
 }
+
+
 
 /* Contenedor principal de los enlaces para las páginas de simulacros */
 .nav-container-simulacro {
@@ -226,7 +234,8 @@ h2 {
     justify-content: space-between; /* Distribuye los elementos de manera equitativa */
     align-items: center;
     width: 60%; /* Establece un ancho máximo del 75% de la pantalla */
-    margin-top: 40px;
+    margin-top: 15px;
+    margin-bottom: 30px;
     margin-left: auto; /* Centra el contenedor en la pantalla */
     margin-right: auto; /* Centra el contenedor en la pantalla */
 }

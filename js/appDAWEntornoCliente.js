@@ -1,205 +1,230 @@
 const questions = [
     {
-        question: "¿Qué tipo de clave es proporcionada por los proveedores de servicios para controlar a los desarrolladores que emplearán sus mashups?",
-        answers: ["API KEY", "Session ID", "OAuth Token"],
+        question: "¿Qué método de array en JavaScript se utiliza para eliminar y devolver el primer elemento de un array?",
+        answers: ["Shift", "pop", "unshift"],
         correct: 0
     },
     {
-        question: "¿Cuál es el principal formato de datos utilizado por las aplicaciones mashup para recibir registros?",
-        answers: ["XML", "CSV", "JSON"],
+        question: "¿Qué método se utiliza para obtener todos los elementos de una página XHTML con una etiqueta específica?",
+        answers: ["getElementsByName()", "getElementById()", "getElementsByTagName()"],
         correct: 2
     },
     {
-        question: "¿Qué método HTTP se recomienda utilizar para enviar datos sensibles como contraseñas?",
-        answers: ["GET", "POST", "PUT"],
+        question: "¿Qué propiedad de un nodo devuelve una lista de todos sus nodos hijos?",
+        answers: ["firstChild", "lastChild", "childNodes"],
+        correct: 2
+    },
+    {
+        question: "¿Qué método de jQuery se usa para obtener o establecer el contenido HTML de un elemento?",
+        answers: ["val()", "html()", "text()"],
         correct: 1
     },
     {
-        question: "¿Qué protocolo de comunicación es fundamental para el funcionamiento de Internet y la comunicación entre componentes?",
-        answers: ["HTTP", "AJP", "TCP/IP"],
-        correct: 2
-    },
-    {
-        question: "¿Qué atributo del tag input type=\"text\" define la cantidad máxima de caracteres que se pueden introducir?",
-        answers: ["size", "maxlength", "value"],
+        question: "¿Cómo seleccionar todos los elementos de tipo \"checkbox\" en jQuery?",
+        answers: ["$(\"input:checkbox\")", "$(\"input[type='checkbox']\")", "$(\"checkbox\")"],
         correct: 1
     },
     {
-        question: "¿Qué tipo de variable es $_SESSION en PHP?",
-        answers: ["Global", "Local", "Superglobal"],
-        correct: 2
-    },
-    {
-        question: "¿Qué función en PHP se utiliza para crear un directorio?",
-        answers: ["mkdir", "makedir", "createdir"],
-        correct: 0
-    },
-    {
-        question: "¿Qué tipo de servidor es responsable de ejecutar la capa de reglas de negocio en un modelo de programación en tres capas?",
-        answers: ["Servidor de aplicaciones", "Servidor de base de datos", "Servidor web"],
-        correct: 0
-    },
-    {
-        question: "¿Qué función en PHP se utiliza para recuperar información de una sesión?",
-        answers: ["Session(\"nombre_de_la_variable \");", "session.getAtribute(\"nombre_de_la_variable\");", "$_SESSION[\"nombre_de_la_variable\"];"],
-        correct: 2
-    },
-    {
-        question: "¿Qué función en PHP se utiliza para cerrar un archivo abierto previamente?",
-        answers: ["fendfile", "fclose", "fterminate"],
+        question: "¿Qué palabra clave se utiliza para declarar una variable local en JavaScript?",
+        answers: ["let", "var", "const"],
         correct: 1
     },
     {
-        question: "¿Qué lenguaje embebido en HTML es conocido por su integración natural con bases de datos MySQL, PostgreSQL o SQLite?",
-        answers: ["PHP", "ASP", "JSP"],
+        question: "Si queremos manejar el evento `click` en elementos `<li>` dentro de un `<ul>` que se agregan dinámicamente, ¿cuál es la mejor práctica en jQuery?",
+        answers: [
+            "$(\"#lista\").on(\"click\", \"li\", function(){ alert(\"Elemento clickeado\"); });",
+            "$(\"li\").click(function(){ alert(\"Elemento clickeado\"); });",
+            "$(\".lista li\").bind(\"click\", function(){ alert(\"Elemento clickeado\"); });"
+        ],
         correct: 0
     },
     {
-        question: "¿Qué tecnología permite la ejecución de scripts en el cliente para interactuar con el usuario?",
-        answers: ["JavaScript", "ASP.NET", "PHP"],
+        question: "¿Cuál es el resultado de 5 + \"5\" en JavaScript?",
+        answers: ["\"55\"", "\"10\"", "10"],
         correct: 0
     },
     {
-        question: "¿Qué función tiene la vista en el patrón MVC?",
-        answers: ["Procesar peticiones", "Interactuar con la base de datos", "Mostrar la interfaz de usuario"],
+        question: "¿Qué función de JavaScript comprueba si un valor es numérico o no?",
+        answers: ["eval", "parseInt", "isNaN"],
         correct: 2
     },
     {
-        question: "¿Qué función en PHP se utiliza para escribir una cadena dentro de un archivo?",
-        answers: ["fstring", "fput", "fwrite"],
+        question: "¿Cuál es la principal diferencia entre los métodos POST y GET en el envío de formularios?",
+        answers: ["GET es más seguro que POST", "POST envía los datos en la URL", "GET envía los datos en la URL"],
         correct: 2
     },
     {
-        question: "¿Qué servidor de aplicaciones se puede utilizar para ejecutar Servlets?",
-        answers: ["Apache Tomcat", "Nginx", "Microsoft IIS"],
-        correct: 0
-    },
-    {
-        question: "¿Qué tipo de dato compuesto se utiliza para almacenar una lista de elementos en PHP?",
-        answers: ["object", "array", "class"],
+        question: "¿Qué método se utiliza para escribir en la pantalla del navegador en JavaScript?",
+        answers: ["console.log()", "document.write()", "alert()"],
         correct: 1
     },
     {
-        question: "¿Qué función en PHP se utiliza para crear una cookie?",
-        answers: ["setcookie()", "createcookie()", "newcookie()"],
+        question: "¿Cuál es la forma correcta de realizar una petición AJAX con jQuery para obtener datos en formato JSON desde \"datos.php\"?",
+        answers: [
+            "$.ajax({url: \"datos.php\", dataType: \"json\", success: function(data){ console.log(data); }});",
+            "$.get(\"datos.php\", function(data) { console.log(data); }, \"json\");",
+            "$.post(\"datos.php\", {tipo: \"json\"}, function(respuesta){ console.log(respuesta); });"
+        ],
         correct: 0
     },
     {
-        question: "¿Qué modelo de programación se basa en la separación de funciones en capas de presentación, reglas de negocio y datos?",
-        answers: ["Modelo en tres capas", "Modelo cliente/servidor", "Modelo de ejecución remota"],
-        correct: 0
-    },
-    {
-        question: "¿Qué tipo de contenido proporciona un servidor web sin modificarlo?",
-        answers: ["Contenido estático", "Contenido embebido", "Contenido dinámico"],
-        correct: 0
-    },
-    {
-        question: "¿Qué palabra clave se utiliza en JavaScript para definir una variable?",
-        answers: ["var", "let", "const"],
-        correct: 0
-    },
-    {
-        question: "¿Qué tipo de aplicaciones pueden incorporar funcionalidades específicas utilizando mashups?",
-        answers: ["Aplicaciones de escritorio", "Juegos en línea", "Sitios web de empresas u organizaciones"],
+        question: "¿Qué propiedad del objeto window permite guardar pares clave/valor en un navegador web sin fecha de vencimiento?",
+        answers: ["cookieStorage", "sessionStorage", "localStorage"],
         correct: 2
     },
     {
-        question: "¿Qué clase debe extender un Servlet en Java?",
-        answers: ["HttpServlet", "Servlet", "HttpRequest"],
-        correct: 0
-    },
-    {
-        question: "¿Qué método PHP devuelve true si una variable contiene un valor en un formulario?",
-        answers: ["get", "post", "isset"],
+        question: "¿Qué símbolo se utiliza en jQuery para seleccionar elementos?",
+        answers: ["%", "@", "$"],
         correct: 2
     },
     {
-        question: "¿Qué protocolo de comunicación es comúnmente utilizado para el acceso a objetos en la comunicación entre servidores web y servidores de aplicaciones?",
-        answers: ["ODBC", "SOAP", "HTTP"],
+        question: "¿Qué propiedad del objeto window devuelve la altura de la ventana del navegador, incluidas las barras de herramientas?",
+        answers: ["innerHeight", "outerHeight", "windowHeight"],
         correct: 1
     },
     {
-        question: "¿Qué herramienta de programación permite traducir el código fuente de un programa a código ejecutable?",
-        answers: ["Editor de texto", "Depurador de código (Debugger)", "Compilador"],
+        question: "¿Qué función en JavaScript se utiliza para comprobar si una cadena contiene un patrón específico?",
+        answers: ["test()", "search()", "match()"],
         correct: 2
     },
     {
-        question: "¿Cuál es la extensión de los archivos que contienen comandos PHP?",
-        answers: [".html", ".js", ".php"],
-        correct: 2
-    },
-    {
-        question: "¿Qué archivo de configuración se utiliza para definir directivas en PHP?",
-        answers: ["app.config", "php.ini", "web.config"],
-        correct: 1
-    },
-    {
-        question: "¿Qué lenguaje de programación es interpretado y no requiere compilación previa?",
-        answers: ["C++", "Java", "Perl"],
-        correct: 2
-    },
-    {
-        question: "¿Qué se debe hacer para garantizar la seguridad de datos en una comunicación web?",
-        answers: ["Utilizar el protocolo HTTPS", "Desactivar las cookies", "Utilizar contraseñas simples"],
+        question: "¿Cuál de las siguientes funciones de jQuery se utiliza para ejecutar código cuando el DOM ha sido cargado?",
+        answers: ["$(document).ready()", "window.onload()", "init()"],
         correct: 0
     },
     {
-        question: "¿Qué función de JavaScript se utiliza para enviar un formulario?",
-        answers: ["post()", "send()", "submit()"],
-        correct: 2
-    },
-    {
-        question: "¿Qué protocolo se utiliza para garantizar una comunicación segura entre cliente y servidor?",
-        answers: ["FTP", "HTTPS", "HTTP"],
+        question: "¿Qué método de jQuery se usa para recorrer todos los elementos de una selección y ejecutar una función en cada uno?",
+        answers: [".map()", ".each()", ".forEach()"],
         correct: 1
     },
     {
-        question: "¿Qué función en PHP se utiliza para abrir un archivo?",
-        answers: ["fopen", "file_open", "open_file"],
+        question: "¿Cuál es el valor de typeof null en JavaScript?",
+        answers: ["\"undefined\"", "\"object\"", "\"null\""],
+        correct: 1
+    },
+    {
+        question: "¿Qué método del objeto document se utiliza para adjuntar un controlador de eventos al documento?",
+        answers: ["addEventListener()", "bindEvent()", "attachEvent()"],
         correct: 0
     },
     {
-        question: "¿Qué tipo de datos en PHP se utiliza para almacenar grupos de caracteres alfanuméricos?",
-        answers: ["String", "Integer", "Float"],
+        question: "¿Qué método de jQuery se usa para agregar una clase a un elemento?",
+        answers: ["addClass()", "attr()", "css()"],
         correct: 0
     },
     {
-        question: "¿Qué lenguaje embebido en HTML es conocido por su facilidad de uso y aprendizaje?",
-        answers: ["JSP", "PHP", "Servlet"],
-        correct: 1
-    },
-    {
-        question: "¿Qué tipo de bucle se utiliza cuando se conoce de antemano el número de iteraciones?",
-        answers: ["for", "while", "do-while"],
+        question: "¿Cuál es el selector en jQuery para seleccionar todos los párrafos dentro de un div?",
+        answers: ["$(\"div p\")", "$(\"div > p\")", "$(\"div, p\")"],
         correct: 0
     },
     {
-        question: "¿Qué herramienta de programación permite gestionar diferentes versiones de un programa?",
-        answers: ["Depurador de código (Debugger)", "Sistema de control de versiones (CVS)", "Editor de texto"],
-        correct: 1
-    },
-    {
-        question: "¿Qué tipo de aplicaciones pueden consumir servicios directamente a través del protocolo HTTP?",
-        answers: ["Aplicaciones de escritorio", "Aplicaciones web híbridas", "Aplicaciones móviles nativas"],
-        correct: 1
-    },
-    {
-        question: "¿Qué método PHP se utiliza para recibir datos enviados mediante el método GET?",
-        answers: ["$_POST", "$_GET", "$_REQUEST"],
-        correct: 1
-    },
-    {
-        question: "¿Qué tipo de bucle se utiliza cuando la condición se evalúa al final de cada iteración?",
-        answers: ["for", "while", "do-while"],
+        question: "¿Qué método de array en JavaScript se utiliza para añadir uno o más elementos al comienzo de un array?",
+        answers: ["push", "pop", "unshift"],
         correct: 2
     },
     {
-        question: "¿Qué lenguaje se utiliza para describir un servicio web en WSDL?",
-        answers: ["JSON", "HTML", "XML"],
+        question: "¿Qué formato de datos es más compacto y ligero que XML y se utiliza en AJAX?",
+        answers: ["HTML", "JSON", "CSV"],
+        correct: 1
+    },
+    {
+        question: "¿Qué propiedad del objeto window devuelve la URL del documento que se está visualizando?",
+        answers: ["location", "href", "src"],
+        correct: 0
+    },
+    {
+        question: "¿Qué método de array en JavaScript se utiliza para unir dos arrays y devolver un nuevo array con la unión?",
+        answers: ["splice", "concat", "join"],
+        correct: 1
+    },
+    {
+        question: "¿Cuál es la diferencia principal entre .text() y .html() en jQuery?",
+        answers: [
+            "Ambos métodos funcionan igual, no hay diferencia",
+            ".text() permite modificar atributos, mientras que .html() solo cambia texto",
+            ".html() devuelve o establece el contenido HTML, mientras que .text() solo maneja texto sin etiquetas"
+        ],
         correct: 2
+    },
+    {
+        question: "¿Qué propiedad de un radiobutton en JavaScript devuelve true si está seleccionado?",
+        answers: ["value", "selected", "checked"],
+        correct: 2
+    },
+    {
+        question: "¿Cuál es la diferencia entre .prop() y .attr() en jQuery?",
+        answers: [
+            ".prop() maneja propiedades del DOM mientras que .attr() trabaja con atributos HTML",
+            ".attr() es más eficiente y reemplaza a .prop()",
+            "No hay diferencia, ambos hacen lo mismo"
+        ],
+        correct: 0
+    },
+    {
+        question: "¿Cuál de las siguientes funciones de jQuery se utiliza para ocultar un elemento?",
+        answers: ["remove()", "fadeOut()", "hide()"],
+        correct: 2
+    },
+    {
+        question: "¿Qué método del objeto window se utiliza para mostrar un cuadro de alerta con un mensaje y un botón Aceptar?",
+        answers: ["displayAlert()", "showAlert()", "alert()"],
+        correct: 2
+    },
+    {
+        question: "¿Qué selector de jQuery se usa para seleccionar el tercer elemento de una lista?",
+        answers: ["$(\"ul li:eq(2)\")", "$(ul li:nth-child(3))", "$(ul li[2])"],
+        correct: 0
+    },
+    {
+        question: "¿Cuál es el propósito del método .data() en jQuery?",
+        answers: [
+            "Almacenar y recuperar datos personalizados en elementos seleccionados",
+            "Enviar datos al servidor sin recargar la página",
+            "Modificar atributos CSS de un elemento"
+        ],
+        correct: 0
+    },
+    {
+        question: "¿Cuál es una de las principales limitaciones de JavaScript en cuanto a la seguridad?",
+        answers: [
+            "Puede cerrar cualquier ventana del navegador",
+            "Puede modificar las preferencias del navegador",
+            "No puede acceder a los archivos del ordenador del usuario"
+        ],
+        correct: 2
+    },
+    {
+        question: "¿Cuál es la forma correcta de ocultar un elemento con jQuery?",
+        answers: ["hide(\"#elemento\");", "$(\"#elemento\").hide();", "$(\"#elemento\").css(\"display\", \"none\");"],
+        correct: 1
+    },
+    {
+        question: "¿Qué tecnología permite realizar cambios en una página web sin necesidad de recargarla?",
+        answers: ["CSS", "HTML5", "AJAX"],
+        correct: 2
+    },
+    {
+        question: "¿Qué función en JavaScript se utiliza para establecer el foco en un elemento de formulario?",
+        answers: ["focus()", "setFocus()", "getFocus()"],
+        correct: 0
+    },
+    {
+        question: "¿Qué función se utiliza para transformar una cadena de texto JSON en un objeto JSON en JavaScript?",
+        answers: ["JSON.parse()", "eval()", "JSON.stringify()"],
+        correct: 0
+    },
+    {
+        question: "¿Qué método de array en JavaScript se utiliza para añadir un elemento al final de un array?",
+        answers: ["push", "unshift", "pop"],
+        correct: 0
+    },
+    {
+        question: "¿Qué evento se produce cuando el usuario selecciona un elemento del formulario?",
+        answers: ["onclick", "onfocus", "onblur"],
+        correct: 1
     }
 ];
+
 
 let currentQuestionIndex = 0;
 let score = 0;
