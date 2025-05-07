@@ -172,7 +172,7 @@ h2 {
     flex-wrap: wrap; /* Permite que los elementos se ajusten en filas */
     justify-content: space-between; /* Distribuye los elementos de manera equitativa */
     align-items: center;
-    max-width: 75%; /* Establece un ancho máximo del 75% de la pantalla */
+    width: 50%; /* Establece un ancho máximo del 50% de la pantalla */
     margin-top: 40px;
     margin-left: auto; /* Centra el contenedor en la pantalla */
     margin-right: auto; /* Centra el contenedor en la pantalla */
@@ -201,6 +201,59 @@ h2 {
 }
 
 .nav-container-modulos a {
+    display: flex;
+    justify-content: center;     /* Centra horizontalmente */
+    align-items: center;         /* Centra verticalmente */
+    text-align: center;
+    padding: 40px 20px;          /* Puedes ajustar la altura visual aquí */
+    min-height: 145px;           /* Asegura que tenga espacio vertical */
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.2rem;
+    border-radius: 5px;
+}
+
+
+.nav-container-modulos a:hover {
+    background-color: #0056b3;
+}
+
+/* Contenedor principal de los enlaces para las páginas de simulacros */
+.nav-container-simulacro {
+    display: flex;
+    flex-wrap: wrap; /* Permite que los elementos se ajusten en filas */
+    justify-content: space-between; /* Distribuye los elementos de manera equitativa */
+    align-items: center;
+    width: 60%; /* Establece un ancho máximo del 75% de la pantalla */
+    margin-top: 40px;
+    margin-left: auto; /* Centra el contenedor en la pantalla */
+    margin-right: auto; /* Centra el contenedor en la pantalla */
+}
+
+.nav-container-simulacro ul {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap; /* Permite que los elementos de la lista se ajusten en varias filas */
+    gap: 30px; /* Espacio entre los elementos */
+    justify-content: space-between; /* Espacio entre las columnas */
+    width: 100%; /* Asegura que la lista ocupe todo el ancho disponible dentro de su contenedor */
+}
+
+.nav-container-simulacro li {
+    background-color: #be2f2f;
+    border-radius: 5px;
+    transition: transform 0.2s ease-in-out;
+    flex: 1 0 30%; /* Esto asegura que los elementos se distribuyan en 3 columnas */
+    box-sizing: border-box; /* Asegura que el padding y el border no afecten al tamaño total */
+}
+
+.nav-container-simulacro li:hover {
+    transform: scale(1.05);
+}
+
+.nav-container-simulacro a {
     display: block;
     padding: 30px 50px;
     color: white;
@@ -211,8 +264,8 @@ h2 {
     border-radius: 5px;
 }
 
-.nav-container-modulos a:hover {
-    background-color: #0056b3;
+.nav-container-simulacro a:hover {
+    background-color: #be2f2f;
 }
 
 /* Estilo para el pie de página */
