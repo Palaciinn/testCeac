@@ -71,7 +71,8 @@ label {
     cursor: pointer;
 }
 
-button#next-question-btn {
+button#next-question-btn,
+button#prev-question-btn {
     background-color: #28a745;
     color: white;
     padding: 10px 20px;
@@ -80,7 +81,8 @@ button#next-question-btn {
     cursor: pointer;
 }
 
-button#next-question-btn:hover {
+button#next-question-btn:hover,
+button#prev-question-btn  {
     background-color: #218838;
 }
 

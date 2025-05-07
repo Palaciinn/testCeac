@@ -18,22 +18,26 @@
     <main>
         <div id="test-container">
             <div id="question-container">
+                <p id="question-number"></p>
                 <p id="question">¿Cuál es la capital de Francia?</p>
             </div>
             <div id="answer-container">
-                <label><input type="radio" name="answer" class="answer" onclick="checkAnswer(0)"> Madrid</label>
-                <label><input type="radio" name="answer" class="answer" onclick="checkAnswer(1)"> Berlín</label>
-                <label><input type="radio" name="answer" class="answer" onclick="checkAnswer(2)"> París</label>
-                <label><input type="radio" name="answer" class="answer" onclick="checkAnswer(3)"> Lisboa</label>
+                <label><input type="radio" name="answer" class="answer"> Opción 1</label>
+                <label><input type="radio" name="answer" class="answer"> Opción 2</label>
+                <label><input type="radio" name="answer" class="answer"> Opción 3</label>
+                <label><input type="radio" name="answer" class="answer"> Opción 4</label>
             </div>
-            <button id="next-question-btn" onclick="nextQuestion()" style="display: none;">Siguiente</button>
+            <div id="nav-buttons">
+                <button id="prev-question-btn" onclick="prevQuestion()" style="display: none;">Anterior</button>
+                <button id="next-question-btn" onclick="nextQuestion()" style="display: none;">Siguiente</button>
+            </div>
         </div>
-
+    
         <div id="result-container" style="display: none;">
             <h2>¡Test Finalizado!</h2>
             <p id="score"></p>
         </div>
-    </main>
+    </main>    
 
     <!-- Footer -->
     <footer>
