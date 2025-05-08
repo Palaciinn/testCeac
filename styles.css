@@ -26,6 +26,7 @@ main {
     text-align: center; /* Centra el texto dentro de main */
     justify-content: center; /* Centra los elementos dentro del main verticalmente */
     gap: 20px; /* Añade espacio entre los elementos dentro de main */
+    margin: 5px;
 }
 
 /* Header */
