@@ -226,6 +226,67 @@ h2 {
     background-color: #0056b3;
 }
 
+/*Estilos Para Contenedor Programacion1Ero en DAM*/
+
+.programación1Ero {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    max-width: 900px;
+    width: 100%;
+    padding: 0 20px;
+    margin: 40px auto;
+    margin-top: -40px;
+}
+
+.programación1Ero ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    width: 100%;
+}
+
+.programación1Ero li {
+    background-color: purple;
+    border-radius: 5px;
+    transition: transform 0.2s ease-in-out;
+    flex: 1 1 calc(50% - 20px);
+    box-sizing: border-box;
+}
+
+@media (min-width: 769px) {
+    .programación1Ero li {
+        flex: 1 1 calc(30% - 20px);
+    }
+}
+
+.programación1Ero li:hover {
+    transform: scale(1.05);
+}
+
+.programación1Ero a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 40px 20px;
+    min-height: 145px;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.2rem;
+    border-radius: 5px;
+}
+
+.programación1Ero a:hover {
+    background-color: purple; /* mantiene el fondo morado al hacer hover */
+}
+
 
 
 /* Contenedor principal de los enlaces para las páginas de simulacros */
