@@ -292,3 +292,106 @@ footer {
 script {
     display: none;
 }
+
+.image-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+    margin-bottom: 10px;
+    margin-right: 235px;
+    z-index: 1;
+}
+
+.image-container img {
+    max-width: 100%;
+    height: auto;
+    max-height: 50px; /* ajusta la altura si es necesario */
+    object-fit: contain;
+    animation: heartbeat 2.5s infinite ease-in-out;
+}
+
+
+/* Animación de latido */
+@keyframes heartbeat {
+    0%, 100% {
+        transform: scale(1);
+    }
+    25% {
+        transform: scale(1.05);
+    }
+    50% {
+        transform: scale(1);
+    }
+    75% {
+        transform: scale(1.05);
+    }
+}
+
+.image-container2 {
+    display: flex;
+    justify-content: center;
+    margin-top: -40px;
+    margin-bottom: 30px;
+}
+
+.image-container2 img {
+    max-width: 100%;
+    height: auto;
+    max-height: 120px; /* ajusta la altura si es necesario */
+    object-fit: contain;
+}
+
+/* Estilos comunes para los botones volver */
+.back-button-container button {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 24px;
+    background-color: #004aad;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.back-button-container button:hover {
+    background-color: #0056b3;
+}
+
+.back-icon,
+.back-icon-mobile {
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+}
+
+/* Botón de escritorio (visible solo en pantallas grandes) */
+.back-button-container.back-desktop {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    padding-left: 60px;
+    margin-top: 20px;
+}
+
+/* Botón de móvil (oculto en pantallas grandes) */
+.back-button-container.back-mobile {
+    display: none;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+/* Media query para pantallas pequeñas: mostrar solo el de móvil */
+@media (max-width: 768px) {
+    .back-button-container.back-desktop {
+        display: none;
+    }
+
+    .back-button-container.back-mobile {
+        display: flex;
+    }
+}
+
