@@ -339,6 +339,56 @@ h2 {
     background-color: #be2f2f;
 }
 
+/* Contenedor principal de los enlaces simulacros extra*/
+.nav-container-extra {
+    display: flex;
+    flex-wrap: wrap; /* Permite que los elementos se ajusten en filas */
+    justify-content: space-between; /* Distribuye los elementos de manera equitativa */
+    align-items: center;
+    width: 60%; /* Establece un ancho máximo del 75% de la pantalla */
+    margin-top: -20px;
+    margin-bottom: 60px;
+    margin-left: auto; /* Centra el contenedor en la pantalla */
+    margin-right: auto; /* Centra el contenedor en la pantalla */
+}
+
+.nav-container-extra ul {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap; /* Permite que los elementos de la lista se ajusten en varias filas */
+    gap: 30px; /* Espacio entre los elementos */
+    justify-content: space-between; /* Espacio entre las columnas */
+    width: 100%; /* Asegura que la lista ocupe todo el ancho disponible dentro de su contenedor */
+}
+
+.nav-container-extra li {
+    background-color: #28ad5b;
+    border-radius: 5px;
+    transition: transform 0.2s ease-in-out;
+    flex: 1 0 30%; /* Esto asegura que los elementos se distribuyan en 3 columnas */
+    box-sizing: border-box; /* Asegura que el padding y el border no afecten al tamaño total */
+}
+
+.nav-container-extra li:hover {
+    transform: scale(1.05);
+}
+
+.nav-container-extra a {
+    display: block;
+    padding: 30px 50px;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.2rem;
+    text-align: center;
+    border-radius: 5px;
+}
+
+.nav-container-extra a:hover {
+    background-color: #28ad5b;
+}
+
 /* Estilo para el pie de página */
 footer {
     font-family: 'Arial', sans-serif;

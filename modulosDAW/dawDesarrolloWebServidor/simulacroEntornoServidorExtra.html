@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Entorno Servidor - Simulacro Extra</title>
+    <link rel="stylesheet" href="../../stylesTest.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <a href="../../index.html">Inicio</a>
+        </nav>
+    </header>
+
+    <!-- Main del Test de Preguntas -->
+    <main>
+        <div id="test-container">
+            <div id="question-container">
+                <p id="question-number"></p>
+                <p id="question">Pregunta</p>
+            </div>
+            <div id="answer-container">
+                <label><input type="radio" name="answer" class="answer"> Opción 1</label>
+                <label><input type="radio" name="answer" class="answer"> Opción 2</label>
+                <label><input type="radio" name="answer" class="answer"> Opción 3</label>
+            </div>
+            <div id="nav-buttons">
+                <button id="prev-question-btn" onclick="prevQuestion()" style="display: none;">Anterior</button>
+                <button id="next-question-btn" onclick="nextQuestion()" style="display: none;">Siguiente</button>
+            </div>
+        </div>
+    
+        <div id="result-container" style="display: none;">
+            <h2>¡Test Finalizado!</h2>
+            <p id="score"></p>
+            <button id="restart-btn" onclick="restartTest()">Reintentar</button>
+            <div id="detailed-results"></div>
+        </div>        
+    </main>    
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2025 Test Interactivos AP</p>
+    </footer>
+
+    <script src="../../js/appDawEntornoServidorExtra.js"></script>
+</body>
+</html>
