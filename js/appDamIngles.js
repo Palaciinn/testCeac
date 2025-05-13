@@ -77,7 +77,7 @@ const questions = [
   {
     question: "The IT department provides ______________ technical support to all employees.",
     answers: ["best", "better", "good"],
-    correct: 2
+    correct: 1
   },
   {
     question: "The new employee proved to be ______________ the previous one.",
@@ -117,7 +117,7 @@ const questions = [
   {
     question: "He’s ______________ phoned me to tell me he’s coming over.",
     answers: ["still", "just", "already"],
-    correct: 2
+    correct: 1
   },
   {
     question: "D.H. Lawrence, _____________ was an English author, wrote many interesting novels.",
