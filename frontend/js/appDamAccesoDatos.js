@@ -108,8 +108,8 @@ const questions = [
     },
     {
         question: "¿Qué método de la clase Connection se utiliza para confirmar una transacción en JDBC?",
-        answers: ["finalize", "apply", "confirm", "commit"],
-        correct: 3
+        answers: ["finalize", "commit", "confirm"],
+        correct: 1
     },
     {
         question: "¿Qué lenguaje de consulta utiliza Tamino para ejecutar sentencias desde aplicaciones?",
