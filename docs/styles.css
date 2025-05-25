@@ -507,3 +507,16 @@ script {
     }
 }
 
+/*Botón cerrar sesion*/
+#logout-btn {
+  background-color: #004aad;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 10px 20px;
+  font-weight: bold;
+  cursor: pointer;
+}
+#logout-btn:hover {
+  background-color: #00338d;
+}
