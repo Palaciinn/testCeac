@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 // Conexión con Supabase
 import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm';
 
