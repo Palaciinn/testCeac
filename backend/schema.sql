@@ -1,0 +1,6 @@
+CREATE TABLE IF NOT EXISTS preguntas (
+  id SERIAL PRIMARY KEY,
+  question TEXT NOT NULL,
+  answers TEXT[] NOT NULL,
+  correct INTEGER NOT NULL
+);
