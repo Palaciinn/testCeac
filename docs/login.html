@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Login - Test Interactivo</title>
+</head>
+<body>
+  <h1>Iniciar sesión o registrarse</h1>
+
+  <!-- Login/Registro -->
+  <form id="auth-form">
+    <input type="email" id="email" placeholder="Correo electrónico" required>
+    <input type="password" id="password" placeholder="Contraseña" required>
+    <button type="submit">Iniciar sesión / Registrarse</button>
+  </form>
+
+  <!-- Magic Link -->
+  <h2>O iniciar sesión con enlace mágico</h2>
+  <form id="magic-form">
+    <input type="email" id="magic-email" placeholder="Correo electrónico" required>
+    <button type="submit">Enviar enlace mágico</button>
+  </form>
+
+  <script type="module" src="./auth.js"></script>
+</body>
+</html>

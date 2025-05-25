@@ -28,8 +28,18 @@ async function fetchAndStart() {
   questions = data;
   userAnswers = Array(questions.length).fill(null);
 
-  shuffleQuestions(questions);
-  loadQuestion();
+shuffleQuestions(questions);
+loadQuestion();
+
+// Mostrar test después de 1.5s mínimo
+setTimeout(() => {
+  document.getElementById('loader').style.display = 'none';
+  document.querySelector('main').classList.remove('hidden');
+  document.getElementById('test-container').style.display = 'block';
+}, 2000);
+
+
+
 }
 
 document.addEventListener('DOMContentLoaded', fetchAndStart);
@@ -178,6 +188,35 @@ function shuffleQuestions(array) {
     [array[i], array[j]] = [array[j], array[i]];
   }
 }
+
+// Atajos de teclado: 1-3 para seleccionar / Enter para avanzar / Esc para retroceder
+document.addEventListener('keydown', (event) => {
+  const key = event.key;
+  const radios = document.querySelectorAll('.answer');
+
+  // Selección con teclas 1, 2, 3
+  if (['1', '2', '3'].includes(key)) {
+    const index = parseInt(key) - 1;
+    if (radios[index]) {
+      radios[index].checked = true;
+      checkAnswer();
+    }
+  }
+
+  // Avanzar con Enter (si ya hay respuesta)
+  if (key === 'Enter') {
+    const currentAnswer = userAnswers[currentQuestionIndex];
+    if (currentAnswer !== null) {
+      nextQuestion();
+    }
+  }
+
+  // Retroceder con Escape (si no estás en la primera)
+  if (key === 'Escape' && currentQuestionIndex > 0) {
+    prevQuestion();
+  }
+});
+
 
 // Al final del archivo:
 window.nextQuestion = nextQuestion;
