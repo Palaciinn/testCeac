@@ -4,8 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Login / Registro</title>
-  <link rel="stylesheet" href="auth-style.css" />
-  <script defer src="../js/auth-ui.js"></script>
+  <link rel="stylesheet" href="../docs/css/auth-style.css" />
+  <script type="module" src="js/auth.js"></script>
 </head>
 <body>
 
@@ -15,38 +15,47 @@
   <div class="form-container sign-up-container">
     <form id="register-form">
       <h1>Crear Cuenta</h1>
+      <input type="text" id="signup-nombre" placeholder="Nombre" required />
       <input type="email" id="register-email" placeholder="Email" required />
       <input type="password" id="register-password" placeholder="Contraseña" required />
       <button type="submit">Registrarse</button>
     </form>
   </div>
 
+  <div class="mobile-login-link">
+  <p>¿Ya tienes cuenta?</p>
+  <button onclick="mostrarLogin()">Inicia sesión</button>
+  </div>
+
+
   <div class="form-container sign-in-container">
     <form id="login-form">
       <h1>Iniciar Sesión</h1>
       <input type="email" id="login-email" placeholder="Email" required />
       <input type="password" id="login-password" placeholder="Contraseña" required />
-      <a href="#">¿Olvidaste tu contraseña?</a>
       <button type="submit">Entrar</button>
     </form>
+  </div>
+
+  <div class="mobile-register-link">
+  <p>¿No tienes cuenta?</p>
+  <button onclick="mostrarRegistro()">Registrarse</button>
   </div>
 
   <div class="overlay-container">
     <div class="overlay">
       <div class="overlay-panel overlay-left">
         <h1>¡Bienvenido de nuevo!</h1>
-        <p>Inicia sesión con tu cuenta para continuar</p>
+        <p>Inicia sesión para continuar</p>
         <button class="ghost" id="signIn">Iniciar Sesión</button>
       </div>
       <div class="overlay-panel overlay-right">
         <h1>¡Hola, futuro usuario!</h1>
-        <p>Regístrate con tus datos para comenzar</p>
+        <p>Regístrate para estudiar juntos</p>
         <button class="ghost" id="signUp">Registrarse</button>
       </div>
     </div>
   </div>
 </div>
-
-<script type="module" src="auth.js"></script>
 </body>
 </html>

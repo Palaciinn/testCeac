@@ -31,22 +31,61 @@ main {
 
 /* Header */
 header {
-    background-color: #333;
-    padding: 30px 0;
-    width: 100%; /* Asegura que el header ocupe todo el ancho de la pantalla */
-    text-align: center;
+  background-color: #333;
+  padding: 30px 0;
+  width: 100%;
+  position: relative;
 }
 
-header nav a {
-    color: #fff;
-    text-decoration: none;
-    font-weight: bold;
-    font-size: 1.3rem;
+/* Contenedor del nav */
+.nav-header {
+  position: relative;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  justify-content: center; /* centramos el contenido principal */
+  align-items: center;
 }
 
-header nav a:hover {
-    text-decoration: underline;
+/* Enlace "Inicio" centrado */
+.nav-center a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1.3rem;
+  transition: transform 0.2s ease; /* animación suave */
 }
+
+.nav-center a:hover {
+  text-decoration: underline;
+}
+
+/* Botón "Mi perfil" */
+.nav-right {
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.nav-right button {
+  background-color: #fff;
+  color: #333;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 1rem;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.nav-right button:hover {
+  background-color: #ddd;
+  transform: scale(1.05); /* zoom in */
+}
+
 
 /* Títulos */
 h1 {
