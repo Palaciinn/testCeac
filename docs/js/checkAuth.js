@@ -37,3 +37,5 @@ async function main() {
 }
 
 document.addEventListener('DOMContentLoaded', main);
+
+document.getElementById("actual-year").textContent = new Date().getFullYear();
