@@ -8,8 +8,8 @@ const supabase = createClient(
 async function main() {
   const { data: { session } } = await supabase.auth.getSession();
 
-  if (!session && window.location.pathname !== '/docs/auth.html') {
-    window.location.href = new URL('/docs/auth.html', window.location.origin).href;
+  if (!session && window.location.pathname !== 'auth.html') {
+    window.location.href = new URL('auth.html', window.location.origin).href;
     return;
   }
 
@@ -18,7 +18,7 @@ async function main() {
     perfilBtn.style.display = session ? 'inline-block' : 'none';
 
     perfilBtn.addEventListener('click', () => {
-      const target = session ? '/docs/perfil.html' : '/docs/auth.html';
+      const target = session ? 'perfil.html' : 'auth.html';
       window.location.href = new URL(target, window.location.origin).href;
     });
   }
@@ -30,12 +30,10 @@ async function main() {
       if (error) {
         alert("Error al cerrar sesión: " + error.message);
       } else {
-        window.location.href = new URL('/docs/auth.html', window.location.origin).href;
+        window.location.href = new URL('auth.html', window.location.origin).href;
       }
     });
   }
 }
 
 document.addEventListener('DOMContentLoaded', main);
-
-document.getElementById("actual-year").textContent = new Date().getFullYear();
