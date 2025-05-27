@@ -8,23 +8,21 @@ const supabase = createClient(
 async function main() {
   const { data: { session } } = await supabase.auth.getSession();
 
-  // Redirigir si no hay sesión
-  if (!session && window.location.pathname !== '/auth.html') {
-    window.location.href = "auth.html";
+  if (!session && window.location.pathname !== '/docs/auth.html') {
+    window.location.href = new URL('/docs/auth.html', window.location.origin).href;
     return;
   }
 
-  // Mostrar botón "Mi perfil" si existe
   const perfilBtn = document.getElementById('perfil-btn');
   if (perfilBtn) {
     perfilBtn.style.display = session ? 'inline-block' : 'none';
 
     perfilBtn.addEventListener('click', () => {
-      window.location.href = session ? 'perfil.html' : 'auth.html';
+      const target = session ? '/docs/perfil.html' : '/docs/auth.html';
+      window.location.href = new URL(target, window.location.origin).href;
     });
   }
 
-  // Botón cerrar sesión
   const logoutBtn = document.getElementById('logout-btn');
   if (logoutBtn) {
     logoutBtn.addEventListener('click', async () => {
@@ -32,11 +30,10 @@ async function main() {
       if (error) {
         alert("Error al cerrar sesión: " + error.message);
       } else {
-        window.location.href = "auth.html";
+        window.location.href = new URL('/docs/auth.html', window.location.origin).href;
       }
     });
   }
 }
 
-// Ejecutar todo cuando cargue el DOM
 document.addEventListener('DOMContentLoaded', main);
