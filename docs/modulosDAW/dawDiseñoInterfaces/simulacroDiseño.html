@@ -3,34 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Diseño - Simulacro</title>
+    <title>Diseño- Simulacro</title>
     <link rel="stylesheet" href="../../css/stylesTest.css">
     <link rel="stylesheet" href="../../css/styles.css">
+
 </head>
 <body>
     <!-- Header -->
     <header>
         <nav class="nav-header">
             <div class="nav-center">
-                <a href="../../index.html">Inicio</a>            </div>
+                <a href="../../index.html">Inicio</a>
+            </div>
             <div class="nav-right">
                 <button id="perfil-btn">Mi perfil</button>
             </div>
         </nav>
     </header>
 
+    <!-- loader -->
+    <div id="loader">
+        <div class="loader"></div>
+    </div>
+
+
     <!-- Main del Test de Preguntas -->
-    <main>
+    <main class="hidden">
         <div id="test-container">
             <div id="question-container">
                 <p id="question-number"></p>
                 <p id="question">Pregunta</p>
             </div>
-            <div id="answer-container">
-                <label><input type="radio" name="answer" class="answer"> Opción 1</label>
-                <label><input type="radio" name="answer" class="answer"> Opción 2</label>
-                <label><input type="radio" name="answer" class="answer"> Opción 3</label>
-            </div>
+            <div id="answer-container"></div>
             <div id="nav-buttons">
                 <button id="prev-question-btn" onclick="prevQuestion()" style="display: none;">Anterior</button>
                 <button id="next-question-btn" onclick="nextQuestion()" style="display: none;">Siguiente</button>
@@ -50,6 +54,8 @@
         <p>© 2025 Test Interactivos AP</p>
     </footer>
 
-    <script src="../../js/appDawDiseñoSimulacro.js"></script>
+    <!-- Script como módulo -->
+    <script type="module" src="../../js/appDawDiseñoSimulacro.js"></script>
+
 </body>
 </html>
