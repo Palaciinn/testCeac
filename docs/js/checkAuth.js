@@ -5,11 +5,15 @@ const supabase = createClient(
   'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InR0bXp1Y3Z6bWJ1YWhha21hdXZ6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDgxNzE3MjIsImV4cCI6MjA2Mzc0NzcyMn0.Npeft23fnGss2PTDbWd2CkdCRFFBhc_1TtZqb1N7JVI'
 );
 
+// Ruta base dinámica según si estás en GitHub Pages o local
+const basePath = window.location.pathname.includes('/testCeac') ? '/testCeac/' : '/';
+
 async function main() {
   const { data: { session } } = await supabase.auth.getSession();
 
-  if (!session && window.location.pathname !== 'auth.html') {
-    window.location.href = new URL('auth.html', window.location.origin).href;
+  // Redirige si no hay sesión y no estás ya en auth.html
+  if (!session && !window.location.pathname.endsWith('auth.html')) {
+    window.location.href = `${basePath}auth.html`;
     return;
   }
 
@@ -19,7 +23,7 @@ async function main() {
 
     perfilBtn.addEventListener('click', () => {
       const target = session ? 'perfil.html' : 'auth.html';
-      window.location.href = new URL(target, window.location.origin).href;
+      window.location.href = `${basePath}${target}`;
     });
   }
 
@@ -30,7 +34,7 @@ async function main() {
       if (error) {
         alert("Error al cerrar sesión: " + error.message);
       } else {
-        window.location.href = new URL('auth.html', window.location.origin).href;
+        window.location.href = `${basePath}auth.html`;
       }
     });
   }
