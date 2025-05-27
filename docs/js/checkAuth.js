@@ -9,9 +9,12 @@ const supabase = createClient(
 const basePath = window.location.pathname.includes('/testCeac') ? '/testCeac/' : '/';
 
 async function main() {
+  // Captura el token desde la URL si viene de verificación por email
+  await supabase.auth.getSessionFromUrl();
+
   const { data: { session } } = await supabase.auth.getSession();
 
-  // Redirige si no hay sesión y no estás ya en auth.html
+  // Redirige si no hay sesión y no estás en auth.html
   if (!session && !window.location.pathname.endsWith('auth.html')) {
     window.location.href = `${basePath}auth.html`;
     return;
