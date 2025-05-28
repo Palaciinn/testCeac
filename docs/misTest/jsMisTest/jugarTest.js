@@ -115,6 +115,8 @@ function calculateScore() {
 }
 
 function showResults() {
+    console.log("Mostrando resultados...");
+
   document.querySelector("main").style.display = "none";
   document.getElementById("result-container").style.display = "block";
   document.getElementById("score").innerText = `Tu puntaje es: ${score} de ${questions.length}`;

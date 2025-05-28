@@ -37,12 +37,13 @@
       </div>
     </div>
 
-    <div id="result-container" style="display: none;">
-      <h2>¡Test Finalizado!</h2>
-      <p id="score"></p>
-      <button id="restart-btn" onclick="restartTest()">Reintentar</button>
-      <div id="detailed-results"></div>
+    <div id="result-container" style="display: none; padding: 20px;">
+        <h2>¡Test Finalizado!</h2>
+        <p id="score" style="font-weight: bold;"></p>
+        <div id="detailed-results" style="margin-top: 20px;"></div>
+        <button id="restart-btn" onclick="restartTest()">Reintentar</button>
     </div>
+
 
     <div class="back-button">
       <button onclick="window.history.back()">
