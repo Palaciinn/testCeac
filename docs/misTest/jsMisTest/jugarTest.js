@@ -31,7 +31,7 @@ async function fetchQuestions() {
 
   questions = data.map(q => ({
     ...q,
-    answers: JSON.parse(q.answers),
+    answers: q.answers,
     correct: Number(q.correct)
   }));
 
