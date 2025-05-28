@@ -129,7 +129,7 @@ function showResults() {
     });
 
     const feedback = document.createElement("p");
-    feedback.innerText = userAnswers[i] === q.correct ? "¡Correcto!" : "Incorrecto :(";
+    feedback.innerText = userAnswers[i] === q.correct ? "Correcta :)" : "Incorrecto :(";
     feedback.style.fontWeight = "bold";
     feedback.style.marginTop = "10px";
     feedback.style.color = userAnswers[i] === q.correct ? "#2e7d32" : "#c62828";
