@@ -1,22 +1,29 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Crear Test</title>
+  <meta charset="UTF-8">
+  <title>Mis Test</title>
+  <link rel="stylesheet" href="../css/misTest.css">
+  <link rel="stylesheet" href="../css/styles.css">
 </head>
-<body>
-  <h1>Crear nuevo test</h1>
-  <form id="test-form">
-    <label for="title">Título del test:</label><br>
-    <input type="text" id="title" required><br><br>
+
+<main class="crear-test-main">
+  <h1 class="crear-test-title">Crear nuevo test</h1>
+  <form id="test-form" class="crear-test-form">
+    <label for="title">Título del test:</label>
+    <input type="text" id="title" required>
 
     <div id="preguntas-container"></div>
 
-    <button type="button" id="btn-agregar-pregunta">➕ Añadir pregunta</button>
-    <button type="submit">💾 Guardar test</button>
+    <div class="botones-formulario">
+      <button type="button" id="btn-agregar-pregunta" class="boton añadir">➕ Añadir pregunta</button>
+      <button type="submit" class="boton guardar">💾 Guardar test</button>
+    </div>
   </form>
+</main>
 
   <script type="module" src="jsMisTest/crearTest.js"></script>
 </body>
+
 </html>
