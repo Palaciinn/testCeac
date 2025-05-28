@@ -1,4 +1,4 @@
-import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm'
+import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm';
 
 const supabase = createClient(
   'https://ttmzucvzmbuahakmauvz.supabase.co',
@@ -13,38 +13,27 @@ let userAnswers = [];
 async function fetchQuestions() {
   const params = new URLSearchParams(window.location.search);
   const testTitle = params.get("test");
+  if (!testTitle) return alert("Test no especificado en la URL.");
 
-  const titleEl = document.getElementById("test-title");
-  if (titleEl && testTitle) {
-    titleEl.innerText = `Test: ${testTitle}`;
-  }
-
-  const { data: userData } = await supabase.auth.getUser();
-  if (!userData?.user) {
-    alert("Debes iniciar sesión para jugar el test.");
-    return;
-  }
+  document.getElementById("test-title").innerText = `Test: ${testTitle}`;
 
   const { data, error } = await supabase
     .from("user_tests_questions")
     .select("*")
-    .eq("user_id", userData.user.id)
     .eq("test_title", testTitle)
     .order("created_at", { ascending: true });
 
   if (error || !data.length) {
-    alert("No se pudieron cargar las preguntas.");
+    alert("No se encontraron preguntas para este test.");
     console.error(error);
     return;
   }
 
   questions = data.map(q => ({
     ...q,
-    answers: typeof q.answers === "string" ? JSON.parse(q.answers) : q.answers,
-    correct: typeof q.correct === "string" ? parseInt(q.correct) : q.correct
+    answers: JSON.parse(q.answers),
+    correct: Number(q.correct)
   }));
-
-  console.log("Preguntas cargadas:", questions);
 
   userAnswers = Array(questions.length).fill(null);
   loadQuestion();
@@ -56,19 +45,17 @@ async function fetchQuestions() {
 }
 
 function loadQuestion() {
-  const current = questions[currentQuestionIndex];
-  console.log(`Cargando pregunta ${currentQuestionIndex + 1}:`, current);
+  const q = questions[currentQuestionIndex];
 
   document.getElementById("question-number").innerText = `Pregunta ${currentQuestionIndex + 1} / ${questions.length}`;
-  document.getElementById("question").innerText = current.question;
+  document.getElementById("question").innerText = q.question;
 
-  const answerContainer = document.getElementById("answer-container");
-  answerContainer.innerHTML = "";
-
-  current.answers.forEach((answer, i) => {
+  const container = document.getElementById("answer-container");
+  container.innerHTML = "";
+  q.answers.forEach((answer, i) => {
     const label = document.createElement("label");
     label.innerHTML = `<input type="radio" name="answer" class="answer" onclick="checkAnswer()"> ${answer}`;
-    answerContainer.appendChild(label);
+    container.appendChild(label);
   });
 
   const selected = userAnswers[currentQuestionIndex];
@@ -85,10 +72,9 @@ function loadQuestion() {
 
 function checkAnswer() {
   const radios = document.querySelectorAll(".answer");
-  radios.forEach((radio, i) => {
-    if (radio.checked) {
+  radios.forEach((r, i) => {
+    if (r.checked) {
       userAnswers[currentQuestionIndex] = i;
-      console.log(`Respuesta seleccionada para la pregunta ${currentQuestionIndex + 1}: opción ${i}`);
       document.getElementById("next-question-btn").style.display = "inline-block";
     }
   });
@@ -96,12 +82,9 @@ function checkAnswer() {
 
 function nextQuestion() {
   currentQuestionIndex++;
-  console.log("Avanzando a pregunta:", currentQuestionIndex);
-
   if (currentQuestionIndex < questions.length) {
     loadQuestion();
   } else {
-    console.log("Final del test alcanzado. Calculando puntuación...");
     calculateScore();
     showResults();
   }
@@ -115,36 +98,29 @@ function prevQuestion() {
 }
 
 function calculateScore() {
-  score = 0;
-  questions.forEach((q, i) => {
-    console.log(`Pregunta ${i + 1}: usuario eligió ${userAnswers[i]}, correcta es ${q.correct}`);
-    if (userAnswers[i] === q.correct) score++;
-  });
+  score = questions.reduce((acc, q, i) =>
+    userAnswers[i] === q.correct ? acc + 1 : acc, 0);
 }
 
 function showResults() {
-  console.log("Mostrando resultados...");
-
-  document.querySelector("main").style.display = "none";
+  document.getElementById("test-container").style.display = "none";
   document.getElementById("result-container").style.display = "block";
   document.getElementById("score").innerText = `Tu puntaje es: ${score} de ${questions.length}`;
 
-  const resultContainer = document.getElementById("detailed-results");
-  resultContainer.innerHTML = "";
+  const container = document.getElementById("detailed-results");
+  container.innerHTML = "";
 
   questions.forEach((q, i) => {
     const div = document.createElement("div");
-    div.classList.add("question-result");
     div.innerHTML = `<p><strong>Pregunta ${i + 1}:</strong> ${q.question}</p>`;
     q.answers.forEach((a, j) => {
       const p = document.createElement("p");
       if (j === q.correct) p.classList.add("correct-answer");
       if (j === userAnswers[i] && j !== q.correct) p.classList.add("user-answer");
-      if (j !== userAnswers[i] && j !== q.correct) p.classList.add("neutral-answer");
       p.innerText = a;
       div.appendChild(p);
     });
-    resultContainer.appendChild(div);
+    container.appendChild(div);
   });
 }
 
@@ -153,7 +129,7 @@ function restartTest() {
   score = 0;
   userAnswers = Array(questions.length).fill(null);
   document.getElementById("result-container").style.display = "none";
-  document.querySelector("main").style.display = "block";
+  document.getElementById("test-container").style.display = "block";
   loadQuestion();
 }
 

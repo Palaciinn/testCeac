@@ -1,64 +1,56 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Jugar Test Personalizado</title>
-  <link rel="stylesheet" href="../css/jugarTest.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Jugar Test</title>
+    <link rel="stylesheet" href="../css/stylesTest.css" />
 </head>
 <body>
 
-  <!-- Header -->
-  <header>
+<header>
     <nav class="nav-header">
-      <div class="nav-center">
-        <a href="../index.html">Inicio</a>
-      </div>
+        <div class="nav-center">
+            <a href="../index.html">Inicio</a>
+        </div>
     </nav>
-  </header>
+</header>
 
-  <!-- Loader -->
-  <div id="loader">
-    <div class="loader"></div>
-  </div>
+<div id="loader"><div class="loader"></div></div>
 
-  <!-- Main del Test -->
-  <main class="hidden">
+<main class="hidden">
+    <h2 id="test-title">Cargando test...</h2>
+
     <div id="test-container">
-      <div id="question-container">
-        <p id="question-number"></p>
-        <p id="question">Pregunta</p>
-      </div>
-      <div id="answer-container"></div>
-      <div id="nav-buttons">
-        <button id="prev-question-btn" onclick="prevQuestion()" style="display: none;">Anterior</button>
-        <button id="next-question-btn" onclick="nextQuestion()" style="display: none;">Siguiente</button>
-      </div>
+        <div id="question-container">
+            <p id="question-number"></p>
+            <p id="question">Pregunta</p>
+        </div>
+        <div id="answer-container"></div>
+        <div id="nav-buttons">
+            <button id="prev-question-btn" onclick="prevQuestion()" style="display: none;">Anterior</button>
+            <button id="next-question-btn" onclick="nextQuestion()" style="display: none;">Siguiente</button>
+        </div>
     </div>
 
-    <!-- RESULTADOS -->
-    <div id="result-container">
-      <h2>¡Test Finalizado!</h2>
-      <p id="score"></p>
-      <div id="detailed-results"></div>
-      <button id="restart-btn" onclick="restartTest()">Reintentar</button>
+    <div id="result-container" style="display: none;">
+        <h2>¡Test Finalizado!</h2>
+        <p id="score"></p>
+        <button id="restart-btn" onclick="restartTest()">Reintentar</button>
+        <div id="detailed-results"></div>
     </div>
 
-    <!-- Botón de volver -->
     <div class="back-button">
-      <button onclick="window.history.back()">
-        <img src="../img/arrow_left.png" alt="Volver" class="back-icon">Volver
-      </button>
+        <button onclick="window.history.back()">
+            <img src="/docs/img/arrow_left.png" alt="Volver" class="back-icon">Volver
+        </button>
     </div>
-  </main>
+</main>
 
-  <!-- Footer -->
-  <footer>
+<footer>
     <p>© 2025 Test Interactivos AP</p>
-  </footer>
+</footer>
 
-  <!-- Script -->
-  <script type="module" src="jsMisTest/jugarTest.js"></script>
-
+<script type="module" src="jsMisTest/jugarTest.js"></script>
 </body>
 </html>
