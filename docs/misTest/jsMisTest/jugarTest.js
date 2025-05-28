@@ -12,7 +12,7 @@ let userAnswers = [];
 
 async function fetchQuestions() {
   const params = new URLSearchParams(window.location.search);
-  const testTitle = params.get("id");
+  const testTitle = params.get("test");
 
   const titleEl = document.getElementById("test-title");
   if (titleEl && testTitle) {
