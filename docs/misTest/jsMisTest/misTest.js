@@ -29,11 +29,6 @@ async function cargarTests() {
 
   const titulosUnicos = [...new Set(data.map(q => q.test_title))];
 
-  if (titulosUnicos.length === 0) {
-    container.innerHTML = "<p>No has creado ningún test aún.</p>";
-    return;
-  }
-
   titulosUnicos.forEach(titulo => {
     const card = document.createElement('div');
     card.classList.add('test-card');
@@ -65,6 +60,16 @@ async function cargarTests() {
 
     container.appendChild(card);
   });
+
+  // Tarjeta para crear nuevo test
+  const newTestCard = document.createElement('div');
+  newTestCard.classList.add('test-card', 'new-test');
+  newTestCard.onclick = () => window.location.href = 'crearTest.html';
+  newTestCard.innerHTML = `
+    <div class="new-test-title">Nuevo</div>
+    <span class="material-symbols-outlined new-test-icon">add</span>
+  `;
+  container.appendChild(newTestCard);
 }
 
 cargarTests();
