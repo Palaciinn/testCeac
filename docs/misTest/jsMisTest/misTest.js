@@ -41,7 +41,7 @@ async function cargarTests() {
       <h2 class="test-title">Test: ${titulo}</h2>
       <a href="jugarTest.html?test=${encodeURIComponent(titulo)}" class="play-button">Hacer Test</a>
       <button class="delete-button" title="Eliminar">
-        <img src="/testCeac/docs/img/trash_icon.svg" alt="Eliminar">
+        <img src="/docs/img/trash_icon.svg" alt="Eliminar">
       </button>
     `;
 
