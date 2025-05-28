@@ -4,24 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Jugar Test Personalizado</title>
-  <link rel="stylesheet" href="../css/stylesTest.css">
-  <link rel="stylesheet" href="../css/styles.css">
-  <style>
-    #result-container p {
-      margin-bottom: 0.4rem;
-    }
-    #result-container div {
-      margin-bottom: 1.2rem;
-    }
-    #result-container {
-      background-color: #fff;
-      border-radius: 1rem;
-      max-width: 800px;
-      margin: 2rem auto;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-      padding: 2rem;
-    }
-  </style>
+  <link rel="stylesheet" href="../css/jugarTest.css">
 </head>
 <body>
 
@@ -54,13 +37,11 @@
     </div>
 
     <!-- RESULTADOS -->
-    <div id="result-container" style="display: none;">
-      <h2 style="text-align:center;">¡Test Finalizado!</h2>
-      <p id="score" style="font-size: 1.2rem; font-weight: bold; text-align: center;"></p>
+    <div id="result-container">
+      <h2>¡Test Finalizado!</h2>
+      <p id="score"></p>
       <div id="detailed-results"></div>
-      <div style="text-align: center; margin-top: 2rem;">
-        <button id="restart-btn" onclick="restartTest()">Reintentar</button>
-      </div>
+      <button id="restart-btn" onclick="restartTest()">Reintentar</button>
     </div>
 
     <!-- Botón de volver -->
