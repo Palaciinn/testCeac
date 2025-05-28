@@ -5,16 +5,14 @@ const supabase = createClient(
   'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InR0bXp1Y3Z6bWJ1YWhha21hdXZ6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDgxNzE3MjIsImV4cCI6MjA2Mzc0NzcyMn0.Npeft23fnGss2PTDbWd2CkdCRFFBhc_1TtZqb1N7JVI'
 );
 
-// Ruta base dinámica según si estás en GitHub Pages o local
-const basePath = window.location.pathname.includes('/testCeac') ? '/testCeac/' : '/';
+// Detección automática según entorno
+const isLocal = window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost';
+const basePath = isLocal ? '/docs/' : '/testCeac/';
 
 async function main() {
-  // Captura el token desde la URL si viene de verificación por email
-  await supabase.auth.getSessionFromUrl();
-
   const { data: { session } } = await supabase.auth.getSession();
 
-  // Redirige si no hay sesión y no estás en auth.html
+  // Redirige si no hay sesión y no estamos en auth.html
   if (!session && !window.location.pathname.endsWith('auth.html')) {
     window.location.href = `${basePath}auth.html`;
     return;
@@ -23,8 +21,8 @@ async function main() {
   const perfilBtn = document.getElementById('perfil-btn');
   if (perfilBtn) {
     perfilBtn.style.display = session ? 'inline-block' : 'none';
-
     perfilBtn.addEventListener('click', () => {
+      console.log("Click perfil");
       const target = session ? 'perfil.html' : 'auth.html';
       window.location.href = `${basePath}${target}`;
     });
