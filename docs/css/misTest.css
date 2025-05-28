@@ -2,13 +2,29 @@
 
 main {
   padding: 40px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.new-test-wrapper,
+.test-container {
+  width: 60%;
 }
 
 .test-container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(3, 1fr);
   gap: 30px;
-  padding: 20px;
+  padding: 20px 0;
+}
+
+@media (max-width: 768px) {
+  .test-container,
+  .new-test-wrapper {
+    width: 100%;
+    grid-template-columns: 1fr;
+  }
 }
 
 .test-card {
@@ -64,16 +80,7 @@ main {
   height: 100%;
 }
 
-@media (max-width: 768px) {
-  .test-container {
-    grid-template-columns: 1fr;
-  }
-}
-
-/*-------------
-Estilos Crear Nuevo
--------------*/
-
+/* Estilos para la tarjeta de nuevo test */
 .test-card.new-test {
   display: flex;
   flex-direction: column;

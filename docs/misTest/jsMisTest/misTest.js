@@ -7,13 +7,25 @@ const supabase = createClient(
 
 async function cargarTests() {
   const container = document.getElementById("test-list");
+  const newTestWrapper = document.getElementById("new-test-wrapper");
   container.innerHTML = '';
+  newTestWrapper.innerHTML = '';
 
   const { data: userData, error: authError } = await supabase.auth.getUser();
   if (authError || !userData?.user) {
     container.innerHTML = "<p style='color:red;'>⚠️ Debes iniciar sesión para ver tus tests.</p>";
     return;
   }
+
+  // Tarjeta para crear nuevo test
+  const newTestCard = document.createElement('div');
+  newTestCard.classList.add('test-card', 'new-test');
+  newTestCard.onclick = () => window.location.href = 'crearTest.html';
+  newTestCard.innerHTML = `
+    <div class="new-test-title">Nuevo</div>
+    <span class="material-symbols-outlined new-test-icon">add</span>
+  `;
+  newTestWrapper.appendChild(newTestCard);
 
   const { data, error } = await supabase
     .from('user_tests_questions')
@@ -60,16 +72,6 @@ async function cargarTests() {
 
     container.appendChild(card);
   });
-
-  // Tarjeta para crear nuevo test
-  const newTestCard = document.createElement('div');
-  newTestCard.classList.add('test-card', 'new-test');
-  newTestCard.onclick = () => window.location.href = 'crearTest.html';
-  newTestCard.innerHTML = `
-    <div class="new-test-title">Nuevo</div>
-    <span class="material-symbols-outlined new-test-icon">add</span>
-  `;
-  container.appendChild(newTestCard);
 }
 
 cargarTests();
