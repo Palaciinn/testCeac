@@ -1,10 +1,20 @@
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  overflow: hidden;
+}
+
+
 .perfil-wrapper {
   display: flex;
-  flex-direction: column; /* 🔧 Apila el contenido en columna */
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
-  background: linear-gradient(135deg, #e0e7ff, #f9fafb);
+  background: #f4f4f9;
+  height: 100vh;         /* en vez de min-height */
+  min-width: 100%;
+  overflow: auto;
   padding: 20px;
 }
 
