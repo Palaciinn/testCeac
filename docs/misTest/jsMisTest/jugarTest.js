@@ -103,6 +103,7 @@ function calculateScore() {
 }
 
 function showResults() {
+  document.getElementById("test-title").style.display = "none";
   document.getElementById("test-container").style.display = "none";
   document.getElementById("result-container").style.display = "block";
   document.getElementById("score").innerText = `Tu puntaje es: ${score} de ${questions.length}`;
@@ -114,35 +115,30 @@ function showResults() {
     const div = document.createElement("div");
     div.classList.add("question-result");
 
-    // Pregunta como título
     const title = document.createElement("p");
     title.classList.add("question-title");
     title.innerHTML = `<strong>Pregunta ${i + 1}:</strong> ${q.question}`;
     div.appendChild(title);
 
-    // Respuestas
     q.answers.forEach((a, j) => {
-    const p = document.createElement("p");
-    p.innerText = a;
+      const p = document.createElement("p");
+      p.innerText = a;
+      if (j === q.correct) p.classList.add("correct-answer");
+      if (j === userAnswers[i] && j !== q.correct) p.classList.add("user-answer");
+      div.appendChild(p);
+    });
 
-    if (j === q.correct) p.classList.add("correct-answer");
-    if (j === userAnswers[i] && j !== q.correct) p.classList.add("user-answer");
+    const feedback = document.createElement("p");
+    feedback.innerText = userAnswers[i] === q.correct ? "¡Correcto!" : "Incorrecto :(";
+    feedback.style.fontWeight = "bold";
+    feedback.style.marginTop = "10px";
+    feedback.style.color = userAnswers[i] === q.correct ? "#2e7d32" : "#c62828";
+    div.appendChild(feedback);
 
-    div.appendChild(p);
+    container.appendChild(div);
   });
-
-  // Resultado final de esa pregunta
-  const feedback = document.createElement("p");
-  feedback.innerText = userAnswers[i] === q.correct ? "¡Correcto!" : "Incorrecto :(";
-  // feedback.style.fontWeight = "bold";
-  feedback.style.marginTop = "10px";
-  feedback.style.color = userAnswers[i] === q.correct ? "#2e7d32" : "#c62828";
-
-  div.appendChild(feedback);
-  container.appendChild(div);
-  });
-
 }
+
 
 function restartTest() {
   currentQuestionIndex = 0;
@@ -150,6 +146,7 @@ function restartTest() {
   userAnswers = Array(questions.length).fill(null);
   document.getElementById("result-container").style.display = "none";
   document.getElementById("test-container").style.display = "block";
+  document.getElementById("test-title").style.display = "block";
   loadQuestion();
 }
 
