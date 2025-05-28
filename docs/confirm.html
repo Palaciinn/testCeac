@@ -15,34 +15,36 @@
 <body>
   <h2>Confirmando tu cuenta, por favor espera...</h2>
 
-  <script type="module">
-    import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm';
+<script type="module">
+  import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm';
 
-    const supabase = createClient(
-      'https://ttmzucvzmbuahakmauvz.supabase.co',
-      'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InR0bXp1Y3Z6bWJ1YWhha21hdXZ6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDgxNzE3MjIsImV4cCI6MjA2Mzc0NzcyMn0.Npeft23fnGss2PTDbWd2CkdCRFFBhc_1TtZqb1N7JVI'
+  const supabase = createClient(
+  'https://ttmzucvzmbuahakmauvz.supabase.co',
+  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InR0bXp1Y3Z6bWJ1YWhha21hdXZ6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDgxNzE3MjIsImV4cCI6MjA2Mzc0NzcyMn0.Npeft23fnGss2PTDbWd2CkdCRFFBhc_1TtZqb1N7JVI'
     );
 
-    const confirmEmail = async () => {
-      const { error, data } = await supabase.auth.getSessionFromUrl({ storeSession: true });
 
-      if (error) {
-        document.body.innerHTML = `<h2>Error al confirmar: ${error.message}</h2>`;
-        return;
-      }
+  const confirmEmail = async () => {
+    const { error, data } = await supabase.auth.exchangeCodeForSession();
 
-      if (data?.session) {
-        document.body.innerHTML = `<h2>Cuenta confirmada. Redirigiendo...</h2>`;
-        setTimeout(() => {
-          window.location.href = '/testCeac/index.html';
-        }, 1500);
-      } else {
-        document.body.innerHTML = `<h2>No se pudo establecer sesión. Inicia sesión manualmente.</h2>
-        <a href="/testCeac/auth.html">Ir a login</a>`;
-      }
-    };
+    if (error) {
+      document.body.innerHTML = `<h2>Error al confirmar: ${error.message}</h2>`;
+      return;
+    }
 
-    confirmEmail();
-  </script>
+    if (data?.session) {
+      document.body.innerHTML = `<h2>Cuenta confirmada. Redirigiendo...</h2>`;
+      setTimeout(() => {
+        window.location.href = '/testCeac/index.html';
+      }, 1500);
+    } else {
+      document.body.innerHTML = `<h2>No se pudo establecer sesión. Inicia sesión manualmente.</h2>
+      <a href="/testCeac/auth.html">Ir a login</a>`;
+    }
+  };
+
+  confirmEmail();
+</script>
+
 </body>
 </html>
