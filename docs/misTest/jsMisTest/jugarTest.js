@@ -112,16 +112,36 @@ function showResults() {
 
   questions.forEach((q, i) => {
     const div = document.createElement("div");
-    div.innerHTML = `<p><strong>Pregunta ${i + 1}:</strong> ${q.question}</p>`;
+    div.classList.add("question-result");
+
+    // Pregunta como título
+    const title = document.createElement("p");
+    title.classList.add("question-title");
+    title.innerHTML = `<strong>Pregunta ${i + 1}:</strong> ${q.question}`;
+    div.appendChild(title);
+
+    // Respuestas
     q.answers.forEach((a, j) => {
-      const p = document.createElement("p");
-      if (j === q.correct) p.classList.add("correct-answer");
-      if (j === userAnswers[i] && j !== q.correct) p.classList.add("user-answer");
-      p.innerText = a;
-      div.appendChild(p);
-    });
-    container.appendChild(div);
+    const p = document.createElement("p");
+    p.innerText = a;
+
+    if (j === q.correct) p.classList.add("correct-answer");
+    if (j === userAnswers[i] && j !== q.correct) p.classList.add("user-answer");
+
+    div.appendChild(p);
   });
+
+  // Resultado final de esa pregunta
+  const feedback = document.createElement("p");
+  feedback.innerText = userAnswers[i] === q.correct ? "✅ ¡Correcto!" : "❌ Incorrecto :(";
+  feedback.style.fontWeight = "bold";
+  feedback.style.marginTop = "10px";
+  feedback.style.color = userAnswers[i] === q.correct ? "#2e7d32" : "#c62828";
+
+  div.appendChild(feedback);
+  container.appendChild(div);
+  });
+
 }
 
 function restartTest() {
