@@ -133,8 +133,8 @@ function showResults() {
 
   // Resultado final de esa pregunta
   const feedback = document.createElement("p");
-  feedback.innerText = userAnswers[i] === q.correct ? "✅ ¡Correcto!" : "❌ Incorrecto :(";
-  feedback.style.fontWeight = "bold";
+  feedback.innerText = userAnswers[i] === q.correct ? "¡Correcto!" : "Incorrecto :(";
+  // feedback.style.fontWeight = "bold";
   feedback.style.marginTop = "10px";
   feedback.style.color = userAnswers[i] === q.correct ? "#2e7d32" : "#c62828";
 
