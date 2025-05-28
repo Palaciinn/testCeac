@@ -155,3 +155,38 @@ window.nextQuestion = nextQuestion;
 window.prevQuestion = prevQuestion;
 window.restartTest = restartTest;
 window.checkAnswer = checkAnswer;
+
+// Atajos de teclado: 1-3 para seleccionar / Enter para avanzar / Esc para retroceder
+document.addEventListener('keydown', (event) => {
+  const key = event.key;
+  const radios = document.querySelectorAll('.answer');
+
+  // Selección con teclas 1, 2, 3
+  if (['1', '2', '3'].includes(key)) {
+    const index = parseInt(key) - 1;
+    if (radios[index]) {
+      radios[index].checked = true;
+      checkAnswer();
+    }
+  }
+
+  // Avanzar con Enter (si ya hay respuesta)
+  if (key === 'Enter') {
+    const currentAnswer = userAnswers[currentQuestionIndex];
+    if (currentAnswer !== null) {
+      nextQuestion();
+    }
+  }
+
+  // Retroceder con Escape (si no estás en la primera)
+  if (key === 'Escape' && currentQuestionIndex > 0) {
+    prevQuestion();
+  }
+});
+
+
+// Al final del archivo:
+window.nextQuestion = nextQuestion;
+window.prevQuestion = prevQuestion;
+window.restartTest = restartTest;
+window.checkAnswer = checkAnswer;
