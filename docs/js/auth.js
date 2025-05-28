@@ -21,7 +21,7 @@ signInButton.addEventListener('click', () => {
 // Manejo del formulario de registro
 document.querySelector('.sign-up-container form').addEventListener('submit', async (e) => {
   e.preventDefault();
-  
+
   const email = document.getElementById('register-email').value;
   const password = document.getElementById('register-password').value;
   const nombre = document.getElementById('signup-nombre').value;
@@ -30,6 +30,7 @@ document.querySelector('.sign-up-container form').addEventListener('submit', asy
     email,
     password,
     options: {
+      emailRedirectTo: 'https://palaciinn.github.io/testCeac/confirm.html',
       data: {
         nombre: nombre
       }
@@ -58,7 +59,7 @@ document.querySelector('.sign-in-container form').addEventListener('submit', asy
   }
 });
 
-//Funcion botones registrarse e iniciar sesion mobile
+// Función botones registrarse e iniciar sesión mobile
 function mostrarRegistro() {
   const container = document.querySelector('.container');
   container.classList.add('right-panel-active');
@@ -69,16 +70,5 @@ function mostrarLogin() {
   container.classList.remove('right-panel-active');
 }
 
-window.mostrarRegistro = function () {
-  const container = document.querySelector('.container');
-  container.classList.add('right-panel-active');
-};
-
-window.mostrarLogin = function () {
-  const container = document.querySelector('.container');
-  container.classList.remove('right-panel-active');
-};
-
-
-
-
+window.mostrarRegistro = mostrarRegistro;
+window.mostrarLogin = mostrarLogin;
