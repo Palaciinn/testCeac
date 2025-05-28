@@ -1,25 +1,44 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Jugar Test</title>
-  <link rel="stylesheet" href="../css/stylesTest.css" />
+  <link rel="stylesheet" href="../../css/stylesTest.css">
 </head>
 <body>
-  <h1 id="test-title">Test</h1>
 
-  <div id="loader">Cargando preguntas...</div>
+  <!-- Encabezado global -->
+  <header>
+    <nav class="nav-header">
+      <div class="nav-center">
+        <a href="../../index.html">Inicio</a>
+      </div>
+    </nav>
+  </header>
 
+  <!-- Loader -->
+  <div id="loader" class="loader"></div>
+
+  <!-- Contenido del test -->
   <main class="hidden">
-    <div id="question-number"></div>
-    <div id="question"></div>
-    <div id="answer-container"></div>
-    <div class="controls">
-      <button onclick="prevQuestion()" id="prev-question-btn">Anterior</button>
-      <button onclick="nextQuestion()" id="next-question-btn">Siguiente</button>
+    <div id="test-container">
+      <div id="question-container">
+        <div id="test-title">Test</div>
+        <div id="question-number"></div>
+      </div>
+
+      <div id="question"></div>
+      <div id="answer-container"></div>
+
+      <div class="controls">
+        <button onclick="prevQuestion()" id="prev-question-btn">Anterior</button>
+        <button onclick="nextQuestion()" id="next-question-btn">Siguiente</button>
+      </div>
     </div>
   </main>
 
+  <!-- Resultado -->
   <div id="result-container" style="display:none">
     <h2>Resultado</h2>
     <p id="score"></p>
@@ -27,6 +46,19 @@
     <button onclick="restartTest()">Reintentar</button>
   </div>
 
+  <!-- Botón de volver -->
+  <div class="back-button">
+    <button onclick="window.history.back()">
+      <img src="../../img/arrow_left.png" alt="Volver" class="back-icon">Volver
+    </button>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2025 Test Interactivos AP</p>
+  </footer>
+
+  <!-- Script -->
   <script type="module" src="jsMisTest/jugarTest.js"></script>
 </body>
 </html>
