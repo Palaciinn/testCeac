@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Jugar Test</title>
+  <link rel="stylesheet" href="../css/test-style.css" />
+</head>
+<body>
+  <h1 id="test-title">Test</h1>
+
+  <div id="loader">Cargando preguntas...</div>
+
+  <main class="hidden">
+    <div id="question-number"></div>
+    <div id="question"></div>
+    <div id="answer-container"></div>
+    <div class="controls">
+      <button onclick="prevQuestion()" id="prev-question-btn">Anterior</button>
+      <button onclick="nextQuestion()" id="next-question-btn">Siguiente</button>
+    </div>
+  </main>
+
+  <div id="result-container" style="display:none">
+    <h2>Resultado</h2>
+    <p id="score"></p>
+    <div id="detailed-results"></div>
+    <button onclick="restartTest()">Volver a jugar</button>
+  </div>
+
+  <script type="module" src="jsMisTest/jugarTest.js"></script>
+</body>
+</html>
