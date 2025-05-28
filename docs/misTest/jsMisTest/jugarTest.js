@@ -12,7 +12,7 @@ let userAnswers = [];
 
 async function fetchQuestions() {
   const params = new URLSearchParams(window.location.search);
-  const testTitle = params.get("test");
+  const testTitle = params.get("id");
 
   const titleEl = document.getElementById("test-title");
   if (titleEl && testTitle) {
@@ -134,11 +134,13 @@ function showResults() {
 
   questions.forEach((q, i) => {
     const div = document.createElement("div");
+    div.classList.add("question-result");
     div.innerHTML = `<p><strong>Pregunta ${i + 1}:</strong> ${q.question}</p>`;
     q.answers.forEach((a, j) => {
       const p = document.createElement("p");
-      if (j === q.correct) p.style.color = "green";
-      if (j === userAnswers[i] && j !== q.correct) p.style.color = "red";
+      if (j === q.correct) p.classList.add("correct-answer");
+      if (j === userAnswers[i] && j !== q.correct) p.classList.add("user-answer");
+      if (j !== userAnswers[i] && j !== q.correct) p.classList.add("neutral-answer");
       p.innerText = a;
       div.appendChild(p);
     });
