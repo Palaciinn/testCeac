@@ -1,6 +1,6 @@
 import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm'
 
-const supabase = createClient('https://TU-URL.supabase.co', 'TU-CLAVE-PUBLICA')
+const supabase = createClient('https://ttmzucvzmbuahakmauvz.supabase.co', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InR0bXp1Y3Z6bWJ1YWhha21hdXZ6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDgxNzE3MjIsImV4cCI6MjA2Mzc0NzcyMn0.Npeft23fnGss2PTDbWd2CkdCRFFBhc_1TtZqb1N7JVI')
 
 let preguntaIndex = 0;
 
@@ -23,14 +23,21 @@ function agregarPregunta() {
   preguntaIndex++;
 }
 
+document.getElementById("btn-agregar-pregunta").addEventListener("click", agregarPregunta);
+
 document.getElementById("test-form").addEventListener("submit", async function (e) {
   e.preventDefault();
 
   const form = e.target;
   const title = document.getElementById("title").value;
 
-  const user = await supabase.auth.getUser();
-  const user_id = user.data.user.id;
+  const { data: userData, error: userError } = await supabase.auth.getUser();
+  if (userError || !userData.user) {
+    alert("Debes iniciar sesión para crear tests.");
+    return;
+  }
+
+  const user_id = userData.user.id;
 
   for (let i = 0; i < preguntaIndex; i++) {
     const question = form[`pregunta-${i}`].value;
