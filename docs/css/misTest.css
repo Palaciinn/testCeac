@@ -23,7 +23,7 @@ main {
   .test-container,
   .new-test-wrapper {
     width: 100%;
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr !important;
   }
 }
 
