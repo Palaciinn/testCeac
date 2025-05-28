@@ -38,12 +38,13 @@ async function fetchQuestions() {
     return;
   }
 
-  // ✅ Convierte campos a los tipos esperados
   questions = data.map(q => ({
     ...q,
     answers: typeof q.answers === "string" ? JSON.parse(q.answers) : q.answers,
     correct: typeof q.correct === "string" ? parseInt(q.correct) : q.correct
   }));
+
+  console.log("Preguntas cargadas:", questions);
 
   userAnswers = Array(questions.length).fill(null);
   loadQuestion();
@@ -56,6 +57,8 @@ async function fetchQuestions() {
 
 function loadQuestion() {
   const current = questions[currentQuestionIndex];
+  console.log(`Cargando pregunta ${currentQuestionIndex + 1}:`, current);
+
   document.getElementById("question-number").innerText = `Pregunta ${currentQuestionIndex + 1} / ${questions.length}`;
   document.getElementById("question").innerText = current.question;
 
@@ -85,6 +88,7 @@ function checkAnswer() {
   radios.forEach((radio, i) => {
     if (radio.checked) {
       userAnswers[currentQuestionIndex] = i;
+      console.log(`Respuesta seleccionada para la pregunta ${currentQuestionIndex + 1}: opción ${i}`);
       document.getElementById("next-question-btn").style.display = "inline-block";
     }
   });
@@ -92,9 +96,12 @@ function checkAnswer() {
 
 function nextQuestion() {
   currentQuestionIndex++;
+  console.log("Avanzando a pregunta:", currentQuestionIndex);
+
   if (currentQuestionIndex < questions.length) {
     loadQuestion();
   } else {
+    console.log("Final del test alcanzado. Calculando puntuación...");
     calculateScore();
     showResults();
   }
@@ -110,12 +117,13 @@ function prevQuestion() {
 function calculateScore() {
   score = 0;
   questions.forEach((q, i) => {
+    console.log(`Pregunta ${i + 1}: usuario eligió ${userAnswers[i]}, correcta es ${q.correct}`);
     if (userAnswers[i] === q.correct) score++;
   });
 }
 
 function showResults() {
-    console.log("Mostrando resultados...");
+  console.log("Mostrando resultados...");
 
   document.querySelector("main").style.display = "none";
   document.getElementById("result-container").style.display = "block";
