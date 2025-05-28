@@ -38,11 +38,29 @@ async function cargarTests() {
     const card = document.createElement('div');
     card.classList.add('test-card');
     card.innerHTML = `
-      <div class="card-title">${titulo}</div>
-      <button class="test-button" onclick="window.location.href='jugarTest.html?test=${encodeURIComponent(titulo)}'">
-        Hacer Test
-      </button>
+      <h2 class="test-title">${titulo}</h2>
+      <a href="jugarTest.html?test=${encodeURIComponent(titulo)}" class="play-button">Hacer Test</a>
+      <button class="delete-button">🗑️</button>
     `;
+
+    card.querySelector('.delete-button').addEventListener('click', async () => {
+      const confirmar = confirm(`¿Seguro que deseas eliminar el test "${titulo}"?`);
+      if (!confirmar) return;
+
+      const { error: deleteError } = await supabase
+        .from('user_tests_questions')
+        .delete()
+        .eq('test_title', titulo)
+        .eq('user_id', userData.user.id);
+
+      if (deleteError) {
+        alert("Error al eliminar el test.");
+        console.error(deleteError);
+      } else {
+        cargarTests(); // recargar la lista
+      }
+    });
+
     container.appendChild(card);
   });
 }
