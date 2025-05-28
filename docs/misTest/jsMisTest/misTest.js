@@ -38,9 +38,11 @@ async function cargarTests() {
     const card = document.createElement('div');
     card.classList.add('test-card');
     card.innerHTML = `
-      <h2 class="test-title">${titulo}</h2>
+      <h2 class="test-title">Test: ${titulo}</h2>
       <a href="jugarTest.html?test=${encodeURIComponent(titulo)}" class="play-button">Hacer Test</a>
-      <button class="delete-button">🗑️</button>
+      <button class="delete-button" title="Eliminar">
+        <img src="../img/delete-icon.svg" alt="Eliminar">
+      </button>
     `;
 
     card.querySelector('.delete-button').addEventListener('click', async () => {
