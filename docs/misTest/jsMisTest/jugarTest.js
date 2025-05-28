@@ -14,8 +14,8 @@ async function fetchQuestions() {
   const params = new URLSearchParams(window.location.search);
   const testTitle = params.get("test");
 
-  // Evita error si #test-title no existe
-  const titleEl = document.getElementById("question-number");
+  // ✅ Solo establece el título si el elemento existe
+  const titleEl = document.getElementById("test-title");
   if (titleEl && testTitle) {
     titleEl.innerText = `Test: ${testTitle}`;
   }
