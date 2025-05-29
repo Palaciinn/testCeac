@@ -84,6 +84,34 @@ header {
   }
 }
 
+/* Ajustes del loader para ocupar espacio central */
+#loader {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 70vh;
+}
+
+/* Ajustes para que el footer se quede abajo incluso con loader */
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  flex-grow: 1;
+}
+
+footer {
+  margin-top: auto;
+}
+
+.hidden {
+  display: none !important;
+}
+
 /* Main */
 main {
     flex-grow: 1;
