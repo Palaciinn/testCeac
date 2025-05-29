@@ -30,6 +30,17 @@ function agregarPregunta() {
   `;
 
   preguntasContainer.appendChild(card);
+
+  // Contraer todas las demás
+  document.querySelectorAll('.pregunta-body').forEach(b => b.style.display = 'none');
+  document.querySelectorAll('.toggle-icon').forEach(i => i.classList.add('collapsed'));
+
+  // Expandir esta nueva
+  const newBody = card.querySelector('.pregunta-body');
+  const newIcon = card.querySelector('.toggle-icon');
+  newBody.style.display = 'block';
+  newIcon.classList.remove('collapsed');
+
   actualizarEventos();
 }
 
@@ -49,15 +60,14 @@ function actualizarEventos() {
 
       // Contraer todas
       document.querySelectorAll('.pregunta-body').forEach(b => b.style.display = 'none');
-      document.querySelectorAll('.toggle-icon').forEach(i => i.classList.remove('rotated'));
+      document.querySelectorAll('.toggle-icon').forEach(i => i.classList.add('collapsed'));
 
       if (!isVisible) {
         body.style.display = 'block';
-        icon.classList.add('rotated');
+        icon.classList.remove('collapsed');
       }
     };
   });
-
 }
 
 function reordenarPreguntas() {

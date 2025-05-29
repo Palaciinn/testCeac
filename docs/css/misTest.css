@@ -257,8 +257,9 @@ Css crearTest
   height: 20px;
   transition: transform 0.3s ease;
   cursor: pointer;
+   transform: rotate(-90deg); /* Por defecto apunta hacia abajo */
 }
 
 .toggle-icon.rotated {
-  transform: rotate(90deg);
+  transform: rotate(0deg);
 }
