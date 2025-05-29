@@ -252,27 +252,13 @@ Css crearTest
   border-color: #2563eb;
 }
 
-.toggle-icon {
-  width: 20px;
-  height: 20px;
-  transition: transform 0.3s ease;
-  cursor: pointer;
-   transform: rotate(-90deg); /* Por defecto apunta hacia abajo */
-}
-
-.toggle-icon.rotated {
-  transform: rotate(0deg);
-}
-
-/* Flecha expandir/contraer SVG */
-.pregunta-actions .toggle-icon {
-  width: 18px;
-  height: 18px;
+.material-symbols-outlined.toggle-icon {
+  font-size: 24px;
   cursor: pointer;
   transition: transform 0.3s ease;
-  transform: rotate(0deg); /* Apunta a la izquierda por defecto */
+  transform: rotate(-90deg); /* Contraída */
 }
 
-.pregunta-actions .toggle-icon.expanded {
-  transform: rotate(90deg); /* Apunta hacia abajo cuando está expandido */
+.material-symbols-outlined.toggle-icon.expanded {
+  transform: rotate(0deg); /* Expandida (hacia abajo) */
 }

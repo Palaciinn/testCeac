@@ -14,7 +14,7 @@ function agregarPregunta() {
     <div class="pregunta-header">
       <h3>Pregunta ${index}</h3>
       <div class="pregunta-actions">
-        <img src="../img/arrow_left_black.svg" class="toggle-icon collapsed" alt="Expandir/Contraer" />
+        <span class="material-symbols-outlined toggle-icon">chevron_left</span>
         <button class="delete-btn" title="Eliminar">
           <img src="../img/trash_icon.svg" alt="Eliminar" />
         </button>
@@ -33,13 +33,13 @@ function agregarPregunta() {
 
   // Contraer todas las demás
   document.querySelectorAll('.pregunta-body').forEach(b => b.style.display = 'none');
-  document.querySelectorAll('.toggle-icon').forEach(i => i.classList.add('collapsed'));
+  document.querySelectorAll('.toggle-icon').forEach(i => i.classList.remove('expanded'));
 
   // Expandir esta nueva
   const newBody = card.querySelector('.pregunta-body');
   const newIcon = card.querySelector('.toggle-icon');
   newBody.style.display = 'block';
-  newIcon.classList.remove('collapsed');
+  newIcon.classList.add('expanded');
 
   actualizarEventos();
 }
@@ -60,12 +60,12 @@ function actualizarEventos() {
 
       // Contraer todas
       document.querySelectorAll('.pregunta-body').forEach(b => b.style.display = 'none');
-      document.querySelectorAll('.toggle-icon').forEach(i => i.classList.add('collapsed'));
+      document.querySelectorAll('.toggle-icon').forEach(i => i.classList.remove('expanded'));
 
       // Expandir esta si estaba colapsada
       if (!isVisible) {
         body.style.display = 'block';
-        icon.classList.remove('collapsed');
+        icon.classList.add('expanded');
       }
     };
   });
