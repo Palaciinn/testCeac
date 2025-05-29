@@ -1,0 +1,171 @@
+Listado de rutas de carpetas
+El número de serie del volumen es 1EB5-CBEB
+C:.
+¦   estructura.txt
+¦   README.md
+¦   
++---backend
+¦       .env
+¦       db.js
+¦       index.js
+¦       package.json
+¦       schema.sql
+¦       
++---docs
+    ¦   auth.html
+    ¦   dam.html
+    ¦   daw.html
+    ¦   index.html
+    ¦   perfil.html
+    ¦   
+    +---css
+    ¦       auth-style.css
+    ¦       jugarTest.css
+    ¦       misTest.css
+    ¦       perfil.css
+    ¦       styles.css
+    ¦       stylessTestPendiente.css
+    ¦       stylesTest.css
+    ¦       
+    +---img
+    ¦       arrow_left.png
+    ¦       arrow_left_black.svg
+    ¦       foto_portada.png
+    ¦       simulacros_terminados.png
+    ¦       suerte_examenes.png
+    ¦       trash_icon.svg
+    ¦       
+    +---js
+    ¦       appDamAccesoDatos.js
+    ¦       appDamAccesoDatosExtra.js
+    ¦       appDamDesarrolloInterfaces.js
+    ¦       appDamDesarrolloInterfacesExtra.js
+    ¦       appDamEmpresaExtra.js
+    ¦       appDamIngles.js
+    ¦       appDamProgramacionMultimedia.js
+    ¦       appDamProgramacionMultimediaExtra.js
+    ¦       appDamServiciosyProcesos.js
+    ¦       appDamServiciosyProcesosExtra.js
+    ¦       appDamSistemasGestion.js
+    ¦       appDamSistemasGestionExtra.js
+    ¦       appDawDespliegueSimulacro.js
+    ¦       appDawDespliegueSimulacroExtra.js
+    ¦       appDawDiseñoSimulacro.js
+    ¦       appDawDiseñoSimulacroExtra.js
+    ¦       appDawEmpresaSimulacro.js
+    ¦       appDawEmpresaT1.js
+    ¦       appDAWEntornoCliente.js
+    ¦       appDawEntornoClienteExtra.js
+    ¦       appDawEntornoServidor.js
+    ¦       appDawEntornoServidorExtra.js
+    ¦       auth.js
+    ¦       checkAuth.js
+    ¦       perfil.js
+    ¦       
+    +---misTest
+    ¦   ¦   crearTest.html
+    ¦   ¦   jugarTest.html
+    ¦   ¦   misTest.html
+    ¦   ¦   
+    ¦   +---jsMisTest
+    ¦           crearTest.js
+    ¦           jugarTest.js
+    ¦           misTest.js
+    ¦           
+    +---modulosDAM
+    ¦   +---damAccesoDatos
+    ¦   ¦       damAccesoDatos.html
+    ¦   ¦       simulacroAccesoDatos.html
+    ¦   ¦       simulacroAccesoDatosExtra.html
+    ¦   ¦       testTrimestre1AccesoDatos.html
+    ¦   ¦       testTrimestre2AccesoDatos.html
+    ¦   ¦       testTrimestre3AccesoDatos.html
+    ¦   ¦       
+    ¦   +---damDesarrolloInterfaces
+    ¦   ¦       damDesarrolloInterfaces.html
+    ¦   ¦       simulacroDesarrolloInterfaces.html
+    ¦   ¦       simulacroDesarrolloInterfacesExtra.html
+    ¦   ¦       testTrimestre1DesarrolloInterfaces.html
+    ¦   ¦       testTrimestre2DesarrolloInterfaces.html
+    ¦   ¦       testTrimestre3DesarrolloInterfaces.html
+    ¦   ¦       
+    ¦   +---damEmpresa
+    ¦   ¦       damEmpresa.html
+    ¦   ¦       simulacroEmpresa.html
+    ¦   ¦       simulacroEmpresaExtra.html
+    ¦   ¦       testTrimestre1Empresa.html
+    ¦   ¦       testTrimestre2Empresa.html
+    ¦   ¦       testTrimestre3Empresa.html
+    ¦   ¦       
+    ¦   +---damIngles
+    ¦   ¦       damIngles.html
+    ¦   ¦       simulacroIngles.html
+    ¦   ¦       testTrimestre1Ingles.html
+    ¦   ¦       testTrimestre2Ingles.html
+    ¦   ¦       testTrimestre3Ingles.html
+    ¦   ¦       
+    ¦   +---damProgramaciónMultimedia
+    ¦   ¦       damProgramaciónMultimedia.html
+    ¦   ¦       simulacroProgramacionMultimedia.html
+    ¦   ¦       simulacroProgramacionMultimediaExtra.html
+    ¦   ¦       testTrimestre1ProgramaciónMultimedia.html
+    ¦   ¦       testTrimestre2ProgramaciónMultimedia.html
+    ¦   ¦       testTrimestre3ProgramaciónMultimedia.html
+    ¦   ¦       
+    ¦   +---damServiciosyProcesos
+    ¦   ¦       damServiciosyProcesos.html
+    ¦   ¦       simulacroServiciosyProcesos.html
+    ¦   ¦       simulacroServiciosyProcesosExtra.html
+    ¦   ¦       testTrimestre1ServiciosyProcesos.html
+    ¦   ¦       testTrimestre2ServiciosyProcesos.html
+    ¦   ¦       testTrimestre3ServiciosyProcesos.html
+    ¦   ¦       
+    ¦   +---damSistemasGestion
+    ¦           damSistemasGestion.html
+    ¦           simulacroSistemasGestion.html
+    ¦           simulacroSistemasGestionExtra.html
+    ¦           testTrimestre1SistemasGestion.html
+    ¦           testTrimestre2SistemasGestion.html
+    ¦           testTrimestre3SistemasGestion.html
+    ¦           
+    +---modulosDAW
+        +---dawDesarrolloWebCliente
+        ¦       dawDesarrolloWebCliente.html
+        ¦       simulacroEntornoCliente.html
+        ¦       simulacroEntornoClienteExtra.html
+        ¦       testTrimestre1EntornoCliente.html
+        ¦       testTrimestre2EntornoCliente.html
+        ¦       testTrimestre3EntornoCliente.html
+        ¦       
+        +---dawDesarrolloWebServidor
+        ¦       dawDesarrolloWebServidor.html
+        ¦       simulacroEntornoServidor.html
+        ¦       simulacroEntornoServidorExtra.html
+        ¦       testTrimestre1EntornoServidor.html
+        ¦       testTrimestre2EntornoServidor.html
+        ¦       testTrimestre3EntornoServidor.html
+        ¦       
+        +---dawDespliegueAppsWeb
+        ¦       dawDespliegueAppsWeb.html
+        ¦       simulacroDespliegue.html
+        ¦       simulacroDespliegueExtra.html
+        ¦       testTrimestre1Despliegue.html
+        ¦       testTrimestre2Despliegue.html
+        ¦       testTrimestre3Despliegue.html
+        ¦       
+        +---dawDiseñoInterfaces
+        ¦       dawDiseñoInterfaces.html
+        ¦       simulacroDiseño.html
+        ¦       simulacroDiseñoExtra.html
+        ¦       testTrimestre1Diseño.html
+        ¦       testTrimestre2Diseño.html
+        ¦       testTrimestre3Diseño.html
+        ¦       
+        +---dawEmpresa
+                dawEmpresa.html
+                simulacroEmpresa.html
+                simulacroEmpresaExtra.html
+                testTrimestre1Empresa.html
+                testTrimestre2Empresa.html
+                testTrimestre3Empresa.html
+                
