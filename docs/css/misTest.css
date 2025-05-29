@@ -218,3 +218,46 @@ Css crearTest
   background-color: #1ab394;
   color: white;
 }
+
+.test-title-input {
+  padding: 0.8rem;
+  font-size: 1.1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  width: 100%;
+  max-width: 500px;
+  margin: auto;
+  display: block;
+}
+
+.agregar-tarjeta-btn {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 30px 20px;
+  background-color: #f0f4ff;
+  border: 2px dashed #3b82f6;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-bottom: 30px;
+  width: 100%;
+  max-width: 500px;
+  margin-inline: auto;
+}
+
+.agregar-tarjeta-btn:hover {
+  background-color: #e0eaff;
+  border-color: #2563eb;
+}
+
+.toggle-icon {
+  cursor: pointer;
+  font-size: 24px;
+  transition: transform 0.3s ease;
+}
+
+.toggle-icon.rotated {
+  transform: rotate(90deg);
+}

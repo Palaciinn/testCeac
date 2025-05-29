@@ -14,17 +14,17 @@ function agregarPregunta() {
     <div class="pregunta-header">
       <h3>Pregunta ${index}</h3>
       <div class="pregunta-actions">
-        <button class="toggle-btn" title="Expandir/Contraer">🔽</button>
-        <button class="delete-btn" title="Eliminar"><img src="../img/trash_icon.svg" alt="Eliminar" /></button>
+        <span class="material-symbols-outlined toggle-icon" title="Expandir">chevron_left</span>
+        <button class="delete-btn" title="Eliminar">
+          <img src="../img/trash_icon.svg" alt="Eliminar" />
+        </button>
       </div>
     </div>
     <div class="pregunta-body">
       <input type="text" name="pregunta-${index}" placeholder="Introduce la pregunta" />
-
       <input type="text" name="respuesta1-${index}" placeholder="Respuesta 1" />
       <input type="text" name="respuesta2-${index}" placeholder="Respuesta 2" />
       <input type="text" name="respuesta3-${index}" placeholder="Respuesta 3" />
-
       <input type="number" name="correcta-${index}" placeholder="Respuesta correcta (1-3)" min="1" max="3" />
     </div>
   `;
@@ -41,12 +41,19 @@ function actualizarEventos() {
     };
   });
 
-  document.querySelectorAll('.toggle-btn').forEach(btn => {
-    btn.onclick = () => {
-      const body = btn.closest('.pregunta-card').querySelector('.pregunta-body');
-      const allBodies = document.querySelectorAll('.pregunta-body');
-      allBodies.forEach(el => (el !== body ? (el.style.display = 'none') : null));
-      body.style.display = body.style.display === 'none' ? 'block' : 'none';
+  document.querySelectorAll('.toggle-icon').forEach(icon => {
+    icon.onclick = () => {
+      const card = icon.closest('.pregunta-card');
+      const body = card.querySelector('.pregunta-body');
+      const isVisible = body.style.display !== 'none';
+
+      document.querySelectorAll('.pregunta-body').forEach(b => b.style.display = 'none');
+      document.querySelectorAll('.toggle-icon').forEach(i => i.classList.remove('rotated'));
+
+      if (!isVisible) {
+        body.style.display = 'block';
+        icon.classList.add('rotated');
+      }
     };
   });
 }
