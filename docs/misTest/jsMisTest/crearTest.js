@@ -1,67 +1,60 @@
 const preguntasContainer = document.getElementById('preguntas-container');
 const btnAgregar = document.getElementById('btn-agregar-pregunta');
 
-btnAgregar.addEventListener('click', () => {
-  const preguntaIndex = preguntasContainer.children.length + 1;
+btnAgregar.addEventListener('click', agregarPregunta);
 
-  const bloque = document.createElement('div');
-  bloque.classList.add('pregunta-bloque');
-  bloque.setAttribute('data-index', preguntaIndex);
+function agregarPregunta() {
+  const index = preguntasContainer.children.length + 1;
 
-  bloque.innerHTML = `
+  const card = document.createElement('div');
+  card.classList.add('pregunta-card');
+  card.setAttribute('data-index', index);
+
+  card.innerHTML = `
     <div class="pregunta-header">
-      <h3>Pregunta ${preguntaIndex}</h3>
+      <h3>Pregunta ${index}</h3>
       <div class="pregunta-actions">
-        <button class="toggle-btn" type="button">🔽</button>
-        <button class="delete-btn" type="button"><img src="../img/trash_icon.svg" alt="Eliminar"></button>
+        <button class="toggle-btn" title="Expandir/Contraer">🔽</button>
+        <button class="delete-btn" title="Eliminar"><img src="../img/trash_icon.svg" alt="Eliminar" /></button>
       </div>
     </div>
     <div class="pregunta-body">
-      <label>Pregunta:</label>
-      <input type="text" name="pregunta-${preguntaIndex}" placeholder="Introduce la pregunta">
+      <input type="text" name="pregunta-${index}" placeholder="Introduce la pregunta" />
 
-      <label>Respuesta 1:</label>
-      <input type="text" name="respuesta1-${preguntaIndex}" placeholder="Opción 1">
+      <input type="text" name="respuesta1-${index}" placeholder="Respuesta 1" />
+      <input type="text" name="respuesta2-${index}" placeholder="Respuesta 2" />
+      <input type="text" name="respuesta3-${index}" placeholder="Respuesta 3" />
 
-      <label>Respuesta 2:</label>
-      <input type="text" name="respuesta2-${preguntaIndex}" placeholder="Opción 2">
-
-      <label>Respuesta 3:</label>
-      <input type="text" name="respuesta3-${preguntaIndex}" placeholder="Opción 3">
-
-      <label>Respuesta correcta (1-3):</label>
-      <input type="number" min="1" max="3" name="correcta-${preguntaIndex}" placeholder="Ej: 2">
+      <input type="number" name="correcta-${index}" placeholder="Respuesta correcta (1-3)" min="1" max="3" />
     </div>
   `;
 
-  preguntasContainer.appendChild(bloque);
+  preguntasContainer.appendChild(card);
   actualizarEventos();
-});
+}
 
 function actualizarEventos() {
   document.querySelectorAll('.delete-btn').forEach(btn => {
     btn.onclick = () => {
-      btn.closest('.pregunta-bloque').remove();
+      btn.closest('.pregunta-card').remove();
       reordenarPreguntas();
     };
   });
 
   document.querySelectorAll('.toggle-btn').forEach(btn => {
     btn.onclick = () => {
-      const bloque = btn.closest('.pregunta-bloque');
-      const cuerpo = bloque.querySelector('.pregunta-body');
-      document.querySelectorAll('.pregunta-body').forEach(el => {
-        if (el !== cuerpo) el.style.display = 'none';
-      });
-      cuerpo.style.display = cuerpo.style.display === 'none' ? 'block' : 'none';
+      const body = btn.closest('.pregunta-card').querySelector('.pregunta-body');
+      const allBodies = document.querySelectorAll('.pregunta-body');
+      allBodies.forEach(el => (el !== body ? (el.style.display = 'none') : null));
+      body.style.display = body.style.display === 'none' ? 'block' : 'none';
     };
   });
 }
 
 function reordenarPreguntas() {
-  document.querySelectorAll('.pregunta-bloque').forEach((bloque, i) => {
-    bloque.setAttribute('data-index', i + 1);
-    bloque.querySelector('h3').textContent = `Pregunta ${i + 1}`;
+  document.querySelectorAll('.pregunta-card').forEach((card, i) => {
+    card.setAttribute('data-index', i + 1);
+    card.querySelector('h3').textContent = `Pregunta ${i + 1}`;
   });
 }
 
@@ -71,19 +64,18 @@ document.getElementById('test-form').addEventListener('submit', (e) => {
   const titulo = document.getElementById('title').value;
   const preguntas = [];
 
-  document.querySelectorAll('.pregunta-bloque').forEach((bloque) => {
-    const index = bloque.dataset.index;
-    const pregunta = bloque.querySelector(`[name=pregunta-${index}]`).value;
+  document.querySelectorAll('.pregunta-card').forEach(card => {
+    const index = card.dataset.index;
+    const pregunta = card.querySelector(`[name=pregunta-${index}]`).value;
     const respuestas = [
-      bloque.querySelector(`[name=respuesta1-${index}]`).value,
-      bloque.querySelector(`[name=respuesta2-${index}]`).value,
-      bloque.querySelector(`[name=respuesta3-${index}]`).value
+      card.querySelector(`[name=respuesta1-${index}]`).value,
+      card.querySelector(`[name=respuesta2-${index}]`).value,
+      card.querySelector(`[name=respuesta3-${index}]`).value
     ];
-    const correcta = parseInt(bloque.querySelector(`[name=correcta-${index}]`).value) - 1;
+    const correcta = parseInt(card.querySelector(`[name=correcta-${index}]`).value) - 1;
 
     preguntas.push({ question: pregunta, answers: respuestas, correct: correcta });
   });
 
   console.log({ titulo, preguntas });
-  // Aquí puedes llamar a Supabase para guardar
 });
