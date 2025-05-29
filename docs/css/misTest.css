@@ -253,9 +253,10 @@ Css crearTest
 }
 
 .toggle-icon {
-  cursor: pointer;
-  font-size: 24px;
+  width: 20px;
+  height: 20px;
   transition: transform 0.3s ease;
+  cursor: pointer;
 }
 
 .toggle-icon.rotated {

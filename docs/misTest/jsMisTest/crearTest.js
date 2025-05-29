@@ -14,7 +14,7 @@ function agregarPregunta() {
     <div class="pregunta-header">
       <h3>Pregunta ${index}</h3>
       <div class="pregunta-actions">
-        <span class="material-symbols-outlined toggle-icon" title="Expandir">chevron_left</span>
+        <img src="../img/arrow_left_black.svg" class="toggle-icon" alt="Expandir/Contraer" />
         <button class="delete-btn" title="Eliminar">
           <img src="../img/trash_icon.svg" alt="Eliminar" />
         </button>
@@ -47,6 +47,7 @@ function actualizarEventos() {
       const body = card.querySelector('.pregunta-body');
       const isVisible = body.style.display !== 'none';
 
+      // Contraer todas
       document.querySelectorAll('.pregunta-body').forEach(b => b.style.display = 'none');
       document.querySelectorAll('.toggle-icon').forEach(i => i.classList.remove('rotated'));
 
@@ -56,6 +57,7 @@ function actualizarEventos() {
       }
     };
   });
+
 }
 
 function reordenarPreguntas() {
