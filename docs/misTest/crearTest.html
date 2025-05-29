@@ -3,26 +3,26 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>Mis Test</title>
-  <link rel="stylesheet" href="../css/misTest.css">
-  <link rel="stylesheet" href="../css/styles.css">
+  <title>Crear Test</title>
+  <link rel="stylesheet" href="../css/styles.css" />
+  <link rel="stylesheet" href="../css/misTest.css" />
 </head>
 
-<main class="crear-test-main">
-  <h1 class="crear-test-title">Crear nuevo test</h1>
-  <form id="test-form" class="crear-test-form">
-    <label for="title">Título del test:</label>
-    <input type="text" id="title" required>
+<body>
+  <main class="crear-test-main">
+    <h1 class="crear-test-title">Crear nuevo test</h1>
+    <form id="test-form" class="crear-test-form">
+      <label for="title">Título del test:</label>
+      <input type="text" id="title" required />
 
-    <div id="preguntas-container"></div>
+      <div id="preguntas-container"></div>
 
-    <div class="botones-formulario">
-      <button type="button" id="btn-agregar-pregunta" class="boton añadir">➕ Añadir pregunta</button>
-      <button type="submit" class="boton guardar">💾 Guardar test</button>
-    </div>
-  </form>
-</main>
-
+      <div class="botones-formulario">
+        <button type="button" id="btn-agregar-pregunta" class="boton añadir">➕ Añadir pregunta</button>
+        <button type="submit" class="boton guardar">💾 Guardar test</button>
+      </div>
+    </form>
+  </main>
   <script type="module" src="jsMisTest/crearTest.js"></script>
 </body>
 

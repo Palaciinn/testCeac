@@ -1,70 +1,89 @@
-import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm'
+const preguntasContainer = document.getElementById('preguntas-container');
+const btnAgregar = document.getElementById('btn-agregar-pregunta');
 
-const supabase = createClient('https://ttmzucvzmbuahakmauvz.supabase.co', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InR0bXp1Y3Z6bWJ1YWhha21hdXZ6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDgxNzE3MjIsImV4cCI6MjA2Mzc0NzcyMn0.Npeft23fnGss2PTDbWd2CkdCRFFBhc_1TtZqb1N7JVI')
+btnAgregar.addEventListener('click', () => {
+  const preguntaIndex = preguntasContainer.children.length + 1;
 
-let preguntaIndex = 0;
+  const bloque = document.createElement('div');
+  bloque.classList.add('pregunta-bloque');
+  bloque.setAttribute('data-index', preguntaIndex);
 
-function agregarPregunta() {
-  const container = document.getElementById("preguntas-container");
+  bloque.innerHTML = `
+    <div class="pregunta-header">
+      <h3>Pregunta ${preguntaIndex}</h3>
+      <div class="pregunta-actions">
+        <button class="toggle-btn" type="button">🔽</button>
+        <button class="delete-btn" type="button"><img src="../img/trash_icon.svg" alt="Eliminar"></button>
+      </div>
+    </div>
+    <div class="pregunta-body">
+      <label>Pregunta:</label>
+      <input type="text" name="pregunta-${preguntaIndex}" placeholder="Introduce la pregunta">
 
-  const div = document.createElement("div");
-  div.innerHTML = `
-    <h3>Pregunta ${preguntaIndex + 1}</h3>
-    <label>Pregunta:</label><br>
-    <input type="text" name="pregunta-${preguntaIndex}" required><br>
-    <label>Respuestas:</label><br>
-    <input type="text" name="respuesta-${preguntaIndex}-0" placeholder="Respuesta 1" required><br>
-    <input type="text" name="respuesta-${preguntaIndex}-1" placeholder="Respuesta 2" required><br>
-    <input type="text" name="respuesta-${preguntaIndex}-2" placeholder="Respuesta 3" required><br>
-    <label>Correcta (0-2):</label><br>
-    <input type="number" name="correcta-${preguntaIndex}" min="0" max="2" required><br><br>
+      <label>Respuesta 1:</label>
+      <input type="text" name="respuesta1-${preguntaIndex}" placeholder="Opción 1">
+
+      <label>Respuesta 2:</label>
+      <input type="text" name="respuesta2-${preguntaIndex}" placeholder="Opción 2">
+
+      <label>Respuesta 3:</label>
+      <input type="text" name="respuesta3-${preguntaIndex}" placeholder="Opción 3">
+
+      <label>Respuesta correcta (1-3):</label>
+      <input type="number" min="1" max="3" name="correcta-${preguntaIndex}" placeholder="Ej: 2">
+    </div>
   `;
-  container.appendChild(div);
-  preguntaIndex++;
+
+  preguntasContainer.appendChild(bloque);
+  actualizarEventos();
+});
+
+function actualizarEventos() {
+  document.querySelectorAll('.delete-btn').forEach(btn => {
+    btn.onclick = () => {
+      btn.closest('.pregunta-bloque').remove();
+      reordenarPreguntas();
+    };
+  });
+
+  document.querySelectorAll('.toggle-btn').forEach(btn => {
+    btn.onclick = () => {
+      const bloque = btn.closest('.pregunta-bloque');
+      const cuerpo = bloque.querySelector('.pregunta-body');
+      document.querySelectorAll('.pregunta-body').forEach(el => {
+        if (el !== cuerpo) el.style.display = 'none';
+      });
+      cuerpo.style.display = cuerpo.style.display === 'none' ? 'block' : 'none';
+    };
+  });
 }
 
-document.getElementById("btn-agregar-pregunta").addEventListener("click", agregarPregunta);
+function reordenarPreguntas() {
+  document.querySelectorAll('.pregunta-bloque').forEach((bloque, i) => {
+    bloque.setAttribute('data-index', i + 1);
+    bloque.querySelector('h3').textContent = `Pregunta ${i + 1}`;
+  });
+}
 
-document.getElementById("test-form").addEventListener("submit", async function (e) {
+document.getElementById('test-form').addEventListener('submit', (e) => {
   e.preventDefault();
 
-  const form = e.target;
-  const title = document.getElementById("title").value;
+  const titulo = document.getElementById('title').value;
+  const preguntas = [];
 
-  const { data: userData, error: userError } = await supabase.auth.getUser();
-  if (userError || !userData.user) {
-    alert("Debes iniciar sesión para crear tests.");
-    return;
-  }
-
-  const user_id = userData.user.id;
-
-  for (let i = 0; i < preguntaIndex; i++) {
-    const question = form[`pregunta-${i}`].value;
-    const answers = [
-      form[`respuesta-${i}-0`].value,
-      form[`respuesta-${i}-1`].value,
-      form[`respuesta-${i}-2`].value
+  document.querySelectorAll('.pregunta-bloque').forEach((bloque) => {
+    const index = bloque.dataset.index;
+    const pregunta = bloque.querySelector(`[name=pregunta-${index}]`).value;
+    const respuestas = [
+      bloque.querySelector(`[name=respuesta1-${index}]`).value,
+      bloque.querySelector(`[name=respuesta2-${index}]`).value,
+      bloque.querySelector(`[name=respuesta3-${index}]`).value
     ];
-    const correct = parseInt(form[`correcta-${i}`].value);
+    const correcta = parseInt(bloque.querySelector(`[name=correcta-${index}]`).value) - 1;
 
-    const { error } = await supabase.from("user_tests_questions").insert({
-      user_id,
-      test_title: title,
-      question,
-      answers,
-      correct
-    });
+    preguntas.push({ question: pregunta, answers: respuestas, correct: correcta });
+  });
 
-    if (error) {
-      alert("Error al guardar una pregunta");
-      console.error(error);
-      return;
-    }
-  }
-
-  alert("Test creado correctamente");
-  form.reset();
-  document.getElementById("preguntas-container").innerHTML = '';
-  preguntaIndex = 0;
+  console.log({ titulo, preguntas });
+  // Aquí puedes llamar a Supabase para guardar
 });

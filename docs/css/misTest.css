@@ -126,63 +126,33 @@ main {
 Css crearTest
 ---------*/
 
-.crear-test-main {
-  max-width: 700px;
-  margin: 0 auto;
-  padding: 2rem;
-}
-
-.crear-test-title {
-  text-align: center;
-  font-size: 2rem;
-  color: #3b82f6;
-  margin-bottom: 1.5rem;
-}
-
-.crear-test-form {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-}
-
-.crear-test-form label {
-  font-weight: bold;
-  margin-top: 1rem;
-}
-
-.crear-test-form input[type="text"],
-.crear-test-form input[type="number"] {
-  padding: 0.6rem;
-  border-radius: 8px;
-  border: 1px solid #ccc;
-  width: 100%;
-}
-
-.botones-formulario {
+/* Contenedor de cabecera de la pregunta */
+.pregunta-header {
   display: flex;
   justify-content: space-between;
-  gap: 10px;
+  align-items: center;
+  margin-bottom: 1rem;
 }
 
-.boton {
-  padding: 0.8rem 1.4rem;
+.pregunta-actions button {
+  background: none;
   border: none;
-  border-radius: 8px;
-  font-weight: bold;
+  margin-left: 10px;
   cursor: pointer;
-  transition: background 0.3s ease;
+  font-size: 1.2rem;
 }
 
-.boton.añadir {
-  background-color: #facc15;
-  color: #000;
+.pregunta-actions img {
+  width: 20px;
+  height: 20px;
 }
 
-.boton.guardar {
-  background-color: #10b981;
-  color: #fff;
+/* Ocultar cuerpo de pregunta por defecto */
+.pregunta-body {
+  display: block;
 }
 
-.boton:hover {
-  opacity: 0.85;
+/* Aumentar separación entre respuestas */
+.pregunta-bloque input[type="text"] {
+  margin-bottom: 1.5rem;
 }
