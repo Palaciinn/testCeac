@@ -36,8 +36,16 @@ document.querySelector('.sign-up-container form').addEventListener('submit', asy
   });
 
   if (error) {
-    alert("❌ Error al registrarse: " + error.message);
+  let mensaje = "❌ Error al registrarse:\n\n";
+
+  if (error.message === "User already registered") {
+    mensaje += "Este correo ya está registrado. Intenta iniciar sesión.";
   } else {
+    mensaje += error.message;
+  }
+
+  alert(mensaje);
+}else {
     alert("✅ Registro exitoso. Ya puedes iniciar sesión.");
     container.classList.remove("right-panel-active");
   }
