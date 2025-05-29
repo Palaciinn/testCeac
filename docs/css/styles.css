@@ -519,9 +519,9 @@ script {
   margin-top: 10px;
   margin-bottom: 30px;
 
-  background-color: transparent;
+  background-color: #f0f4ff;
   color: #004aad;
-  border: 2px dashed #3b82f6;
+  border: 3px dashed #004aad;
   border-radius: 12px;
   font-weight: 800;
   font-size: 1.2rem;
@@ -529,57 +529,9 @@ script {
   cursor: pointer;
   position: relative;
   z-index: 0;
+  text-align: center;
   transition: all 0.3s ease;
   box-shadow: 0 8px 20px rgba(59, 130, 246, 0.15);
-}
-
-/* Efecto animado brillante */
-.button-block::before {
-  content: "";
-  background: linear-gradient(
-    45deg,
-    #3b82f6,
-    #6366f1,
-    #7c3aed,
-    #3b82f6,
-    #06b6d4
-  );
-  position: absolute;
-  top: -3px;
-  left: -3px;
-  width: calc(100% + 6px);
-  height: calc(100% + 6px);
-  background-size: 300%;
-  filter: blur(8px);
-  border-radius: 14px;
-  z-index: -1;
-  opacity: 0.6;
-  animation: glowing-guardar 12s linear infinite;
-}
-
-/* Fondo de respaldo (vacío) */
-.button-block::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: #f0f4ff;
-  border-radius: 12px;
-  z-index: -1;
-}
-
-@keyframes glowing-guardar {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
 }
 
 .button-block:hover {
