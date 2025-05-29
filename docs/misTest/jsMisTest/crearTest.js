@@ -14,7 +14,7 @@ function agregarPregunta() {
     <div class="pregunta-header">
       <h3>Pregunta ${index}</h3>
       <div class="pregunta-actions">
-        <img src="../img/arrow_left_black.svg" class="toggle-icon" alt="Expandir/Contraer" />
+        <img src="../img/arrow_left_black.svg" class="toggle-icon collapsed" alt="Expandir/Contraer" />
         <button class="delete-btn" title="Eliminar">
           <img src="../img/trash_icon.svg" alt="Eliminar" />
         </button>
@@ -62,6 +62,7 @@ function actualizarEventos() {
       document.querySelectorAll('.pregunta-body').forEach(b => b.style.display = 'none');
       document.querySelectorAll('.toggle-icon').forEach(i => i.classList.add('collapsed'));
 
+      // Expandir esta si estaba colapsada
       if (!isVisible) {
         body.style.display = 'block';
         icon.classList.remove('collapsed');

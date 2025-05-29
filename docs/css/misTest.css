@@ -263,3 +263,16 @@ Css crearTest
 .toggle-icon.rotated {
   transform: rotate(0deg);
 }
+
+/* Flecha expandir/contraer SVG */
+.pregunta-actions .toggle-icon {
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  transform: rotate(0deg); /* Apunta a la izquierda por defecto */
+}
+
+.pregunta-actions .toggle-icon.expanded {
+  transform: rotate(90deg); /* Apunta hacia abajo cuando está expandido */
+}
