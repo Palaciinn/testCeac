@@ -1,11 +1,12 @@
 import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm';
 
+// Crear cliente Supabase
 const supabase = createClient(
   'https://ttmzucvzmbuahakmauvz.supabase.co',
   'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InR0bXp1Y3Z6bWJ1YWhha21hdXZ6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDgxNzE3MjIsImV4cCI6MjA2Mzc0NzcyMn0.Npeft23fnGss2PTDbWd2CkdCRFFBhc_1TtZqb1N7JVI'
 );
 
-// Panel deslizante
+// Animación del panel
 const signUpButton = document.getElementById('signUp');
 const signInButton = document.getElementById('signIn');
 const container = document.getElementById('container');
@@ -18,7 +19,7 @@ signInButton.addEventListener('click', () => {
   container.classList.remove("right-panel-active");
 });
 
-// Manejo del formulario de registro
+// Registro de usuario
 document.querySelector('.sign-up-container form').addEventListener('submit', async (e) => {
   e.preventDefault();
 
@@ -30,43 +31,39 @@ document.querySelector('.sign-up-container form').addEventListener('submit', asy
     email,
     password,
     options: {
-      emailRedirectTo: 'https://palaciinn.github.io/testCeac/confirm.html',
-      data: {
-        nombre: nombre
-      }
+      data: { nombre }
     }
   });
 
   if (error) {
-    alert("Error al registrarse: " + error.message);
+    alert("❌ Error al registrarse: " + error.message);
   } else {
-    alert("Registro exitoso. Revisa tu correo para confirmar tu cuenta.");
+    alert("✅ Registro exitoso. Ya puedes iniciar sesión.");
     container.classList.remove("right-panel-active");
   }
 });
 
-// Manejo del formulario de login
+// Inicio de sesión
 document.querySelector('.sign-in-container form').addEventListener('submit', async (e) => {
   e.preventDefault();
-  const email = e.target.querySelector('input[type="email"]').value;
-  const password = e.target.querySelector('input[type="password"]').value;
+  const email = document.getElementById('login-email').value;
+  const password = document.getElementById('login-password').value;
 
   const { error } = await supabase.auth.signInWithPassword({ email, password });
+
   if (error) {
-    alert("Error al iniciar sesión: " + error.message);
+    alert("❌ Error al iniciar sesión: " + error.message);
   } else {
     window.location.href = "index.html";
   }
 });
 
-// Función botones registrarse e iniciar sesión mobile
+// Controles para móvil
 function mostrarRegistro() {
-  const container = document.querySelector('.container');
   container.classList.add('right-panel-active');
 }
 
 function mostrarLogin() {
-  const container = document.querySelector('.container');
   container.classList.remove('right-panel-active');
 }
 

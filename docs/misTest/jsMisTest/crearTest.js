@@ -1,3 +1,10 @@
+import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm';
+
+const supabase = createClient(
+  'https://ttmzucvzmbuahakmauvz.supabase.co',
+  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InR0bXp1Y3Z6bWJ1YWhha21hdXZ6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDgxNzE3MjIsImV4cCI6MjA2Mzc0NzcyMn0.Npeft23fnGss2PTDbWd2CkdCRFFBhc_1TtZqb1N7JVI'
+);
+
 const preguntasContainer = document.getElementById('preguntas-container');
 const btnAgregar = document.getElementById('btn-agregar-pregunta');
 
@@ -31,11 +38,9 @@ function agregarPregunta() {
 
   preguntasContainer.appendChild(card);
 
-  // Contraer todas las demás
   document.querySelectorAll('.pregunta-body').forEach(b => b.style.display = 'none');
   document.querySelectorAll('.toggle-icon').forEach(i => i.classList.remove('expanded'));
 
-  // Expandir esta nueva
   const newBody = card.querySelector('.pregunta-body');
   const newIcon = card.querySelector('.toggle-icon');
   newBody.style.display = 'block';
@@ -58,11 +63,9 @@ function actualizarEventos() {
       const body = card.querySelector('.pregunta-body');
       const isVisible = body.style.display !== 'none';
 
-      // Contraer todas
       document.querySelectorAll('.pregunta-body').forEach(b => b.style.display = 'none');
       document.querySelectorAll('.toggle-icon').forEach(i => i.classList.remove('expanded'));
 
-      // Expandir esta si estaba colapsada
       if (!isVisible) {
         body.style.display = 'block';
         icon.classList.add('expanded');
@@ -78,24 +81,53 @@ function reordenarPreguntas() {
   });
 }
 
-document.getElementById('test-form').addEventListener('submit', (e) => {
+document.getElementById('test-form').addEventListener('submit', async (e) => {
   e.preventDefault();
 
-  const titulo = document.getElementById('title').value;
+  const titulo = document.getElementById('title').value.trim();
   const preguntas = [];
 
   document.querySelectorAll('.pregunta-card').forEach(card => {
     const index = card.dataset.index;
-    const pregunta = card.querySelector(`[name=pregunta-${index}]`).value;
+    const pregunta = card.querySelector(`[name=pregunta-${index}]`).value.trim();
     const respuestas = [
-      card.querySelector(`[name=respuesta1-${index}]`).value,
-      card.querySelector(`[name=respuesta2-${index}]`).value,
-      card.querySelector(`[name=respuesta3-${index}]`).value
+      card.querySelector(`[name=respuesta1-${index}]`).value.trim(),
+      card.querySelector(`[name=respuesta2-${index}]`).value.trim(),
+      card.querySelector(`[name=respuesta3-${index}]`).value.trim()
     ];
     const correcta = parseInt(card.querySelector(`[name=correcta-${index}]`).value) - 1;
 
-    preguntas.push({ question: pregunta, answers: respuestas, correct: correcta });
+    if (pregunta && respuestas.every(r => r !== "") && !isNaN(correcta)) {
+      preguntas.push({ question: pregunta, answers: respuestas, correct: correcta });
+    }
   });
 
-  console.log({ titulo, preguntas });
+  if (!titulo || preguntas.length === 0) {
+    alert("Debes completar al menos una pregunta válida.");
+    return;
+  }
+
+  const { data: { user } } = await supabase.auth.getUser();
+
+  if (!user) {
+    alert("Debes iniciar sesión para guardar tu test.");
+    return;
+  }
+
+  const inserts = preguntas.map(p => ({
+    test_title: titulo,
+    question: p.question,
+    answers: p.answers,
+    correct: p.correct,
+    user_id: user.id
+  }));
+
+  const { error } = await supabase.from('user_tests_questions').insert(inserts);
+
+  if (error) {
+    console.error("Error al guardar:", error);
+    alert("Error al guardar el test.");
+  } else {
+    alert("✅ Test guardado correctamente");
+  }
 });
